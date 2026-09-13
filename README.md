@@ -2,6 +2,8 @@
 
 个人知识网站，记录技术原理、AI 探索与日常思考。纯 HTML、CSS 与 JavaScript，无需安装 npm 依赖，也不需要数据库或后端服务器。
 
+后续新增知识页或首页卡片时，先阅读 [项目工作约定](AGENTS.md) 和 [创作与样式规范](docs/AUTHORING.md)。其中包含配色、布局、交互约定、卡片示例与完成检查，供作者和 AI 工作流共同使用。
+
 ## 项目结构
 
 ```text
@@ -13,6 +15,8 @@ bigghost-ai-notes/
 │           └── index.html             # 关于适配性的层次化学习
 ├── .github/workflows/deploy-pages.yml  # GitHub Pages 自动发布
 ├── .gitignore
+├── AGENTS.md                          # 后续工作入口与项目约定
+├── docs/AUTHORING.md                  # 知识页及首页卡片创作规范
 ├── README.md
 └── DEPLOYMENT.md                       # 从本地同步到 GitHub 的完整指引
 ```
@@ -37,6 +41,8 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory site
 预计网址形式为 `https://你的GitHub用户名.github.io/bigghost-ai-notes/`。实际网址以仓库的 Settings → Pages 或部署任务输出为准。
 
 ## 添加一篇笔记
+
+具体格式与卡片代码示例见 [创作与样式规范](docs/AUTHORING.md)。
 
 1. 在 `site/notes/` 下新建一个稳定的英文目录，例如 `model-inference`。
 2. 把笔记保存为该目录的 `index.html`。如果有单独素材，也放在该笔记目录内。
