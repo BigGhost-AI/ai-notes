@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-motion="on">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从晶体管、CPU 指令集，到操作系统、图形 API 与 AI 后端，一张可交互的地图读懂 Mac 与 Windows 软件为什么不兼容。">
+<meta name="theme-color" content="#f5f5f7">
+<title>程序为何不兼容？从芯片到应用的一张地图</title>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("compatibility-map-theme")==="dark"?"dark":"light";document.documentElement.dataset.motion=localStorage.getItem("compatibility-map-motion")==="off"||matchMedia("(prefers-reduced-motion: reduce)").matches?"off":"on";}catch(e){}</script>
+<style>:root{--ink:#183d3a;--muted:#5e716c;--teal:#17675e;--deep:#113f39;--mint:#d7efdf;--paper:#f6f7f2;--line:#dce3d9;--orange:#b45730;--softorange:#fff0e3;--blue:#315e83;--softblue:#eaf1f6;--white:#fff;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--teal);text-underline-offset:4px}button,select{font:inherit}button{cursor:pointer}button,a,summary,select{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid #db8d42;outline-offset:4px}h1,h2,h3,h4,p{margin:0}h1,h2,h3,h4{line-height:1.35}h1{font-size:clamp(38px,4.6vw,65px);font-weight:650;letter-spacing:-2px}h2{font-size:clamp(27px,3vw,37px);letter-spacing:-1px;font-weight:650}h3{font-size:21px;font-weight:650}h4{font-size:17px}p+p{margin-top:14px}strong{font-weight:650}code{font-family:var(--mono);font-size:.88em;background:#e9eee7;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}small,.small{font-size:13px}button{color:inherit}a.skip{position:fixed;top:-100px;left:16px;background:white;padding:10px 18px;z-index:100}.skip:focus{top:12px}.topbar{position:sticky;top:0;z-index:20;height:66px;border-bottom:1px solid var(--line);background:rgba(246,247,242,.95);backdrop-filter:blur(15px)}.topinner{max-width:1440px;margin:auto;padding:0 38px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-size:16px;font-weight:650}.brandmark{width:27px;height:27px;display:grid;grid-template-columns:repeat(2,1fr);gap:3px;transform:rotate(-8deg)}.brandmark i{background:var(--teal);border-radius:3px}.brandmark i:last-child{background:#8fba9e}.topmeta{font:11px var(--mono);letter-spacing:1.1px;color:var(--muted)}.toplinks{display:flex;align-items:center;gap:22px;font-size:13px}.toplinks a{text-decoration:none;color:var(--muted)}.printbtn{background:none;border:1px solid #b6c9ba;border-radius:100px;padding:5px 14px;font-size:12px}.progress{height:2px;position:absolute;bottom:-1px;background:var(--teal);width:0}.shell{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:188px minmax(0,1fr);gap:38px;padding:0 38px}.side{position:sticky;top:104px;align-self:start;padding-top:40px;height:calc(100vh - 110px);font-size:13px}.side-label{font:10px var(--mono);letter-spacing:2px;color:var(--muted);margin-bottom:22px}.side nav{display:flex;flex-direction:column;gap:3px}.side nav a{display:flex;gap:14px;text-decoration:none;color:var(--muted);padding:10px 0;border-right:2px solid transparent}.side nav a span{font:10px/2.4 var(--mono);color:#7c9288}.side nav a.active{border-color:var(--teal);color:var(--teal);font-weight:650}.sidenote{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;line-height:1.9;color:var(--muted);max-width:153px}.sidenote b{display:block;color:var(--ink);font-size:13px;margin-bottom:5px}.mobile-nav{display:none}main{min-width:0;padding-bottom:60px}.hero{padding:66px 0 46px}.eyebrow{font:11px var(--mono);letter-spacing:2.4px;color:var(--teal);display:flex;gap:10px;align-items:center;margin-bottom:23px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal)}.hero h1 em{font-style:normal;color:var(--teal)}.herotext{font-size:17px;color:var(--muted);max-width:690px;margin-top:24px;line-height:1.9}.herobottom{margin-top:27px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;gap:30px;background:var(--teal);color:white;text-decoration:none;padding:10px 20px;border-radius:7px;font-size:13px}.hero-note{font-size:12px;color:var(--muted)}.hero-visual{margin-top:37px;background:var(--deep);color:#e8f2e9;border-radius:12px;padding:26px 29px;position:relative;overflow:hidden;background-image:radial-gradient(#ffffff09 1px,transparent 1px);background-size:16px 16px}.visual-caption{font:10px var(--mono);letter-spacing:1.6px;color:#aac5b5;margin-bottom:18px;display:flex;justify-content:space-between;gap:15px}.contract-line{display:grid;grid-template-columns:1.15fr 34px 1fr 34px 1fr 34px 1fr;align-items:center;gap:7px}.contract-node{border:1px solid #58766a;background:#204c44;padding:14px 12px;border-radius:6px;text-align:center}.contract-node strong{display:block;font-size:17px}.contract-node small{display:block;font-size:11px;color:#bbd1c2;line-height:1.6;margin-top:6px}.contract-node.first{background:#d7efdf;color:#183d3a;border-color:#d7efdf}.contract-node.first small{color:#486255}.linkline{text-align:center;color:#92be9b;font-size:22px}.contract-caption{font-size:12px;color:#c3d9cb;margin-top:20px;border-top:1px solid #46695b;padding-top:15px}.three-takeaways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:24px}.take{border-top:2px solid #a6b9a7;padding-top:17px}.take .num{font:11px var(--mono);color:#738b7c;display:block;margin-bottom:8px}.take h3{font-size:16px;margin-bottom:7px}.take p{font-size:13px;line-height:1.9;color:var(--muted)}section.chapter{padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:0}.sectionhead{display:flex;justify-content:space-between;gap:25px;align-items:flex-end;margin-bottom:24px}.kicker{display:block;font:11px var(--mono);letter-spacing:2px;color:var(--teal);margin-bottom:12px}.sectionhead .aside{font-size:12px;color:var(--muted);white-space:nowrap}.intro{color:var(--muted);max-width:840px;margin-bottom:27px;line-height:1.9}.note{border-left:3px solid #8aab94;padding:11px 17px;background:#edf2e9;font-size:13px;line-height:1.9;color:#456056;margin:22px 0}.note strong{color:var(--ink)}.note.orange{border-color:#c9875b;background:var(--softorange);color:#754e35}.ref{font:10px var(--mono);vertical-align:super;text-decoration:none;margin-left:3px;color:var(--teal)}.map{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:25px}.stack{display:flex;flex-direction:column;gap:5px}.stackhead{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-bottom:5px}.layer{display:grid;grid-template-columns:38px minmax(0,1fr) 22px;align-items:center;text-align:left;width:100%;padding:12px 13px;background:#fff;border:1px solid var(--line);border-radius:5px;gap:10px;transition:background .15s,border-color .15s}.layer .lid{font:11px var(--mono);color:#7a8e80}.layer strong{font-size:14px;font-weight:550}.layer small{font-size:10px;display:block;line-height:1.5;color:var(--muted);font-family:var(--mono)}.layer .arr{font-size:16px;color:#97ad9a}.layer[aria-pressed=true]{background:var(--deep);border-color:var(--deep);color:#f0f5ed}.layer[aria-pressed=true] .lid,.layer[aria-pressed=true] small,.layer[aria-pressed=true] .arr{color:#bfd8c6}.layer:hover:not([aria-pressed=true]){border-color:#759c80;background:#edf3e9}.layer-detail{border:1px solid #c9d7c8;border-radius:8px;background:#eef3e9;padding:29px;align-self:stretch;display:flex;flex-direction:column}.detailtag{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;font:11px var(--mono);letter-spacing:1px;color:var(--teal)}.detailnum{font:49px/1 var(--mono);color:#93ad91}.layer-detail h3{font-size:25px;margin:5px 0 13px}.layer-detail .analogy{font-size:16px;color:var(--teal);margin-bottom:19px}.layer-detail .explain{font-size:14px;line-height:1.95}.compare-pair{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:23px 0;padding:20px 0;border-top:1px solid #cfddcb;border-bottom:1px solid #cfddcb}.compare-pair span{display:block;font:10px var(--mono);letter-spacing:1px;color:var(--muted);margin-bottom:8px}.compare-pair p{font-size:13px;line-height:1.8;overflow-wrap:anywhere}.fault{font-size:13px;line-height:1.9}.fault b{display:block;margin:11px 0 4px;color:var(--teal)}.detail-source{margin-top:auto;padding-top:20px;color:var(--muted);font-size:11px}.flowlabel{font-size:11px;color:var(--muted);margin:25px 0 10px;letter-spacing:.5px}.flow{display:flex;gap:9px;align-items:stretch}.flowbox{flex:1;min-width:0;border:1px solid var(--line);border-radius:6px;background:white;padding:16px 12px}.flowbox b{display:block;font-size:14px;line-height:1.6}.flowbox span{display:block;font-size:12px;color:var(--muted);line-height:1.8;margin-top:7px}.flowbox.accent{background:#e8f0e3;border-color:#bacdb4}.flowbox.warn{background:var(--softorange);border-color:#e1b397}.flowarrow{display:flex;align-items:center;font-size:18px;color:#7e9582;flex-shrink:0}.split-run{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:17px}.lane{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px}.lane h3{font-size:17px;margin:5px 0 13px}.lane p{font-size:13px;color:var(--muted);line-height:1.9}.lane-tag{font:10px var(--mono);color:var(--teal);letter-spacing:1.3px}.inlinechain{font-size:13px;margin:13px 0;padding:12px 0;border-top:1px dashed #ced9cd;border-bottom:1px dashed #ced9cd;color:var(--teal)}.mini-concept{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:23px}.concept{padding:19px 0;border-top:1px solid #bccdba}.concept b{font:14px var(--mono);color:var(--teal)}.concept h4{margin:7px 0}.concept p{font-size:13px;color:var(--muted)}.case-select{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.case-select button{border:1px solid #cfdbcd;background:white;border-radius:6px;padding:9px 13px;font-size:13px;line-height:1.7}.case-select button[aria-pressed=true]{background:var(--deep);color:white;border-color:var(--deep)}.case-stage{background:#fff;border:1px solid #d2ddce;border-radius:10px;overflow:hidden}.case-top{padding:25px 28px 20px;border-bottom:1px solid var(--line)}.case-meta{font:10px var(--mono);letter-spacing:1.7px;color:var(--teal);margin-bottom:10px}.case-top h3{font-size:23px;margin-bottom:10px}.case-top p{font-size:14px;color:var(--muted)}.case-body{padding:23px 28px 27px}.statusgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}.status{padding:11px 13px;border-radius:5px;font-size:12px;line-height:1.7;background:#eaf2e7}.status strong{display:block;margin-bottom:3px}.status.bad{background:var(--softorange);color:#824322}.status.maybe{background:var(--softblue);color:var(--blue)}.case-route{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:20px}.case-route span{font-size:12px;border:1px solid #cdd9c8;padding:6px 10px;border-radius:4px}.case-route span.bridge{background:#e4eedc;border-color:#a9c09f}.case-route i{font-style:normal;color:#82937f}.case-copy{display:grid;grid-template-columns:1fr 1fr;gap:28px}.case-copy h4{font-size:14px;margin-bottom:7px}.case-copy p{font-size:13px;color:var(--muted);line-height:1.9}.case-limit{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;line-height:1.9;color:var(--muted)}.gpu-diagram{background:var(--deep);border-radius:10px;padding:28px;color:#edf4e9;margin:24px 0}.gpu-diagram .flowlabel{color:#bdd3c1;margin-top:0}.gpu-row{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr 32px 1fr;align-items:center;gap:5px}.gpu-node{border:1px solid #62806a;background:#214d42;border-radius:5px;padding:15px 10px;text-align:center;font-size:13px;line-height:1.7}.gpu-node small{display:block;color:#bdd2bd;font-size:11px;margin-top:6px}.gpu-node.bridge{background:#dae8bd;color:#244132;border-color:#dae8bd}.gpu-node.bridge small{color:#496045}.gpu-caption{font-size:12px;color:#bdd3c1;margin-top:18px}.shader-lane{margin-top:22px;padding-top:20px;border-top:1px solid #4b6b56;font-size:12px;line-height:2;color:#c7daca}.shader-lane b{color:#fff}.explain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}.explain-item{border-top:1px solid #b9cbbb;padding-top:19px}.explain-item h3{font-size:17px;margin-bottom:10px}.explain-item p{font-size:13px;color:var(--muted);line-height:1.95}.native-compare{margin-top:25px;border:1px solid var(--line);border-radius:7px;background:#fff;padding:21px;font-size:13px}.native-compare p{color:var(--muted)}.model-diagram{background:#eaf0e2;border:1px solid #c9d7bd;border-radius:9px;padding:26px;margin:27px 0}.model-top{max-width:460px;margin:0 auto;text-align:center;padding:17px;background:var(--deep);border-radius:6px;color:white}.model-top b{display:block;font-size:18px}.model-top span{display:block;font-size:12px;color:#c1d4bb;margin-top:5px}.branch-label{text-align:center;font-size:12px;color:var(--teal);margin:13px 0}.model-paths{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.model-path{background:#fff;border:1px solid #ccdac4;border-radius:6px;padding:18px}.model-path .pathlabel{font:11px var(--mono);color:var(--teal);margin-bottom:13px;display:block}.model-path b{font-size:16px}.model-path p{font-size:12px;color:var(--muted);line-height:1.9;margin-top:8px}.model-path .down{text-align:center;color:#789467;margin:10px 0;font-size:15px}.model-end{background:#eaf1e3;border-radius:4px;padding:9px;text-align:center;font-size:13px}.model-foot{font-size:12px;color:#5d7355;margin-top:18px;text-align:center}.two-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}.two-cols h3{font-size:18px;margin-bottom:12px}.two-cols p{font-size:14px;color:var(--muted);line-height:1.9}.bullet-list{padding-left:19px;margin:13px 0;font-size:13px;color:var(--muted)}.bullet-list li{padding:4px 0}.code-panel{background:#183c36;border-radius:8px;padding:23px;color:#e6efdc;margin:23px 0}.code-panel .code-caption{display:flex;justify-content:space-between;font:11px var(--mono);color:#b8cbb0;margin-bottom:17px;gap:15px}.code-panel pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.9 var(--mono)}.code-panel code{padding:0;color:inherit;background:none;font-size:inherit}.code-panel .comment{color:#a7c3a6}.code-panel .code-foot{font-size:12px;color:#bbd0b4;margin-top:15px;border-top:1px solid #416657;padding-top:13px}.three-metrics{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:7px;background:#fff;overflow:hidden;margin-top:23px}.metric{padding:22px}.metric+.metric{border-left:1px solid var(--line)}.metric span{font:11px var(--mono);color:var(--teal);display:block;margin-bottom:7px}.metric h4{font-size:17px;margin-bottom:9px}.metric p{font-size:13px;color:var(--muted)}details{border-bottom:1px solid var(--line);padding:17px 0}details summary{cursor:pointer;font-size:15px;font-weight:550;list-style:none;display:flex;gap:18px;justify-content:space-between;align-items:center}details summary::-webkit-details-marker{display:none}details summary:after{content:"+";font-size:22px;font-weight:400;color:var(--teal);flex-shrink:0}details[open] summary:after{content:"−"}details .details-body{font-size:13px;color:var(--muted);padding-top:15px;line-height:2}details .details-body p+p{margin-top:12px}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#fff;margin-top:24px}table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.9;min-width:650px}th{text-align:left;background:#eaf0e4;font-size:12px;font-weight:550;color:var(--teal);padding:15px 18px}td{padding:17px 18px;vertical-align:top;border-top:1px solid var(--line);color:var(--muted)}td:first-child{color:var(--ink);font-weight:600;width:20%}td:nth-child(2){width:29%}.table-hint{font-size:11px;color:var(--muted);margin-top:9px}.checklist{counter-reset:checks;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}.check{counter-increment:checks;border-top:1px solid #c8d5c4;padding:22px 0;display:grid;grid-template-columns:28px 1fr;gap:12px}.check:before{content:"0" counter(checks);font:11px/2 var(--mono);color:var(--teal)}.check h3{font-size:16px;margin-bottom:8px}.check p{font-size:13px;color:var(--muted);line-height:1.95}.final-callout{margin-top:25px;padding:27px 30px;background:var(--deep);color:#edf3e5;border-radius:8px;font-size:21px;line-height:1.8}.final-callout span{display:block;font-size:13px;color:#c2d5b7;margin-top:10px}.glossary{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}.sources-intro{font-size:13px;color:var(--muted);margin-top:15px}.sources-list{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin-top:24px}.source{padding:15px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:27px 1fr;gap:8px;scroll-margin-top:16px}.source .source-num{font:10px/2 var(--mono);color:#789277}.source a{font-size:12px;line-height:1.6;display:inline-block;overflow-wrap:anywhere;text-decoration:none}.source a:hover{text-decoration:underline}.source p{font-size:11px;color:var(--muted);line-height:1.8;margin-top:5px}.source:target{background:#e8efd9}.footer{padding:26px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11px;color:var(--muted);gap:16px}.footer a{text-decoration:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.noscript{background:var(--softorange);padding:15px}.print-extra{display:none}
+@media(min-width:1550px){.shell,.topinner{max-width:1500px}.shell{grid-template-columns:205px minmax(0,1fr);gap:58px}.hero{padding-top:75px}}
+@media(max-width:1100px){.shell{grid-template-columns:145px minmax(0,1fr);gap:27px;padding:0 25px}.topinner{padding:0 25px}.side{font-size:12px}.side nav a{gap:10px}.map{gap:17px}.layer-detail{padding:23px}.hero{padding-top:49px}.flow{gap:6px}.flowbox{padding:13px 10px}.case-body,.case-top{padding-left:23px;padding-right:23px}.topmeta{display:none}.contract-node{padding:12px 8px}.contract-node strong{font-size:15px}}
+@media(max-width:860px){.shell{display:block;max-width:760px;padding:0 26px}.side{display:none}.topinner{padding:0 26px}.topbar{height:60px}.mobile-nav{display:flex;overflow-x:auto;gap:20px;white-space:nowrap;font-size:12px;padding:14px 0;border-bottom:1px solid var(--line)}.mobile-nav a{text-decoration:none;color:var(--muted)}.hero{padding-top:34px}.hero h1{font-size:45px}.sectionhead .aside{display:none}.hero-visual{padding:24px}.contract-line{grid-template-columns:1.15fr 22px 1fr 22px 1fr 22px 1fr;gap:4px}.map{grid-template-columns:1fr 1fr}.gpu-row{grid-template-columns:1fr 22px 1fr 22px 1fr 22px 1fr}.gpu-diagram{padding:23px}.toplinks{gap:16px}.layer{padding:11px 9px;grid-template-columns:29px 1fr 14px;gap:7px}.layer strong{font-size:13px}.layer-detail{padding:21px}.layer-detail h3{font-size:22px}}
+@media(max-width:600px){body{font-size:15px}.shell{padding:0 19px}.topinner{padding:0 19px}.toplinks>a{display:none}.brand{font-size:14px;gap:9px}.brandmark{width:23px;height:23px}.hero{padding-top:30px;padding-bottom:36px}.hero h1{font-size:37px;line-height:1.4;letter-spacing:-1.5px}.eyebrow{font-size:9px;letter-spacing:1.7px;margin-bottom:18px}.herotext{font-size:15px;margin-top:17px}.herobottom{gap:12px}.hero-note{font-size:11px}.hero-visual{margin-top:27px;padding:21px 17px}.visual-caption{font-size:9px;letter-spacing:1px}.visual-caption span:last-child{display:none}.contract-line{grid-template-columns:1fr 22px 1fr;gap:10px}.contract-line .linkline:nth-child(4){display:none}.contract-node{padding:12px 8px}.contract-node strong{font-size:15px}.contract-caption{font-size:11px;margin-top:15px}.three-takeaways{grid-template-columns:1fr;gap:15px;margin-top:23px}.take{display:grid;grid-template-columns:25px 1fr;gap:10px;padding-top:13px;border-width:1px}.take .num{padding-top:4px}.take h3{font-size:15px;margin-bottom:3px}.take p{font-size:12px}.chapter{padding:37px 0!important}.sectionhead{margin-bottom:19px}.kicker{font-size:10px;margin-bottom:9px}.intro{font-size:14px;margin-bottom:22px}.map{grid-template-columns:1fr;gap:17px}.stack{display:grid;grid-template-columns:1fr 1fr;gap:6px}.stackhead{grid-column:1/-1}.layer{padding:10px 9px;grid-template-columns:26px minmax(0,1fr);gap:6px;min-height:63px}.layer .arr{display:none}.layer strong{font-size:12px;line-height:1.5;display:block}.layer small{font-size:9px;line-height:1.5}.layer-detail{padding:22px;min-height:450px}.detailtag{margin-bottom:13px}.detailnum{font-size:36px}.layer-detail h3{font-size:24px}.compare-pair{margin:17px 0;padding:17px 0}.map .layer:last-child{grid-column:1/-1}.flow{flex-direction:column;gap:5px}.flowbox{padding:12px 15px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}.flowbox b{font-size:13px;flex-shrink:0}.flowbox span{font-size:11px;margin:0;text-align:right}.flowarrow{justify-content:center;font-size:0;height:15px}.flowarrow:after{content:"↓";font-size:16px}.split-run,.mini-concept,.explain-grid,.two-cols,.checklist,.glossary,.sources-list{grid-template-columns:1fr}.mini-concept{gap:0}.concept{padding:16px 0}.concept b{float:left;margin:3px 15px 0 0}.concept h4{margin:0 0 5px}.lane{padding:20px}.case-select{gap:7px;display:grid;grid-template-columns:1fr 1fr}.case-select button{font-size:12px;padding:9px 7px}.case-top,.case-body{padding:21px}.case-top h3{font-size:20px}.statusgrid{grid-template-columns:1fr;gap:7px}.status{display:flex;gap:10px;font-size:11px;align-items:baseline;padding:9px 11px}.status strong{margin:0;flex:0 0 96px}.case-copy{grid-template-columns:1fr;gap:18px}.case-route{gap:6px}.case-route span{font-size:11px;padding:5px 8px}.gpu-diagram{padding:21px}.gpu-row{grid-template-columns:1fr;gap:5px}.gpu-node{padding:12px;display:flex;gap:12px;justify-content:space-between;align-items:center;text-align:left}.gpu-node small{margin-top:0;text-align:right}.gpu-row .linkline{height:20px;font-size:0;line-height:20px}.gpu-row .linkline:after{content:"↓";font-size:18px}.shader-lane{font-size:11px}.explain-grid{gap:22px}.model-diagram{padding:19px}.model-paths{grid-template-columns:1fr;gap:12px}.model-path{padding:17px}.model-path .pathlabel{margin-bottom:9px}.model-path p{margin-top:6px}.model-path .down{margin:7px}.model-top b{font-size:16px}.three-metrics{grid-template-columns:1fr}.metric{padding:19px 21px}.metric+.metric{border-left:0;border-top:1px solid var(--line)}.code-panel{padding:19px}.code-panel pre{font-size:11px}.code-panel .code-caption{font-size:10px}.final-callout{font-size:19px;padding:23px}.check{padding:19px 0}.footer{font-size:10px}.sources-list{gap:0}.source a{font-size:12px}.source p{font-size:11px}details summary{font-size:14px}.table-wrap{margin-top:18px}th,td{padding:14px}.note{padding:11px 14px;font-size:12px}.button{padding:9px 16px;font-size:12px}.printbtn{font-size:11px;padding:5px 11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{html{scroll-behavior:auto}body{background:white;font-size:11pt;color:#183d3a}.topbar,.side,.mobile-nav,.herobottom,.case-select,.skip,.progress{display:none!important}.shell{display:block;padding:0;max-width:none}.hero{padding:10px 0 25px}h1{font-size:32pt}.chapter{padding:25px 0!important}h2{font-size:22pt}.hero-visual,.gpu-diagram,.model-top,.code-panel,.final-callout,.layer[aria-pressed=true]{print-color-adjust:exact;-webkit-print-color-adjust:exact}.map{display:block}.stack{display:none}.layer-detail{display:none}.print-extra{display:block}.print-extra .print-entry{padding:14px 0;border-bottom:1px solid #ddd;break-inside:avoid}.print-extra h3{font-size:14pt;margin-bottom:6px}.print-extra p{font-size:10pt;line-height:1.7}.case-stage{display:none}.case-print .print-entry{break-inside:auto}.case-print .case-stage{display:block;margin:13px 0;break-inside:avoid}.three-takeaways,.model-paths,.two-cols,.split-run,.explain-grid{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:10pt}th,td{padding:10px}details{break-inside:avoid}details:not([open])>.details-body{display:block}.sources-list{grid-template-columns:1fr 1fr}.source{break-inside:avoid}.ref{color:#183d3a}.source a{font-size:9pt}.footer{margin-top:10px}section{scroll-margin-top:0}.note{break-inside:avoid}a{text-decoration:none}h2,h3,h4{break-after:avoid}.code-panel{break-inside:avoid}}
+
+@media(max-width:600px){.hero h1 em{display:block}}
+
+/* Self-contained, CSS-only concept sculpture for the opening section. */
+.architecture-art{--art-ink:#526074;--art-line:rgba(92,112,151,.26);--art-pane:rgba(232,240,255,.6);--art-edge:rgba(255,255,255,.94);--pointer-x:0deg;--pointer-y:0deg;position:relative;isolation:isolate;flex:0 0 auto;width:100%;max-width:460px;aspect-ratio:1/1;min-height:0;margin-inline:auto;user-select:none;perspective:950px}
+.architecture-art *{box-sizing:border-box}
+.art-halo{position:absolute;inset:4% -4% 8% -8%;z-index:-1;background:radial-gradient(ellipse at 47% 38%,rgba(128,170,255,.16),rgba(186,155,255,.09) 35%,transparent 69%);filter:blur(9px)}
+.art-scene{position:absolute;inset:0;transform:rotateX(var(--pointer-y)) rotateY(var(--pointer-x));transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.art-ground{position:absolute;width:62%;height:12%;left:13%;top:82%;background:radial-gradient(ellipse,rgba(49,70,115,.22),rgba(49,70,115,.06) 45%,transparent 72%);filter:blur(10px);transform:rotate(-5deg);opacity:.7}
+.art-slab{position:absolute;left:44%;width:58%;height:44%;transform:translate(-50%,-50%);animation:art-float 7s ease-in-out infinite;animation-delay:var(--art-delay,0s)}
+.art-plane{position:absolute;inset:0;border-radius:20px;transform:rotateX(55deg) rotateZ(-33deg);background:linear-gradient(140deg,rgba(255,255,255,.79),var(--art-pane));border:1px solid var(--art-edge);box-shadow:0 2px 0 rgba(151,172,213,.65),0 5px 0 rgba(202,215,239,.53),0 10px 21px rgba(55,80,139,.12),inset 0 0 0 1px rgba(205,220,248,.2),inset 0 2px 8px rgba(255,255,255,.82);overflow:hidden;backface-visibility:hidden}
+.art-plane::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(120deg,rgba(255,255,255,.48),transparent 37%,transparent 60%,rgba(255,255,255,.24));pointer-events:none}
+.art-silicon{top:72%;--art-delay:-3.2s}
+.art-isa{top:60%;--art-delay:-2.4s}
+.art-os{top:48%;--art-delay:-1.6s}
+.art-api{top:36%;--art-delay:-.8s}
+.art-apps{top:24%;--art-delay:0s}
+.art-grid{position:absolute;inset:13%;border:1px solid rgba(130,154,199,.19);border-radius:8px;background-image:linear-gradient(rgba(136,160,204,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(136,160,204,.13) 1px,transparent 1px);background-size:17px 17px}
+.art-apps .art-plane{background:linear-gradient(135deg,rgba(128,192,255,.94) 0%,rgba(114,143,255,.92) 46%,rgba(161,125,243,.9) 100%);border-color:rgba(247,251,255,.95);box-shadow:0 2px 0 rgba(157,182,253,.85),0 5px 0 rgba(105,130,220,.6),0 11px 28px rgba(101,119,214,.2),inset 0 1px 14px rgba(255,255,255,.4)}
+.art-app-dots{display:flex;gap:4px;position:absolute;top:12%;left:12%}
+.art-app-dots i{height:4px;width:4px;border-radius:50%;background:rgba(255,255,255,.72)}
+.art-app-window{position:absolute;inset:29% 16% 29%;display:grid;grid-template-columns:repeat(4,1fr);gap:10%;align-items:center}
+.art-app-window span{aspect-ratio:1;border-radius:22%;background:linear-gradient(150deg,rgba(255,255,255,.88),rgba(227,232,255,.4));border:1px solid rgba(255,255,255,.6);box-shadow:0 5px 12px rgba(45,65,132,.15);position:relative}
+.art-app-window span::after{content:"";position:absolute;inset:28%;border-radius:30%;border:2px solid rgba(105,127,218,.68)}
+.art-app-window span:nth-child(2)::after{border-radius:50%;border-color:rgba(110,137,220,.67)}
+.art-app-window span:nth-child(3)::after{inset:29% 32%;border-width:0 2px 0 2px;border-radius:0;transform:skew(-13deg)}
+.art-app-window span:nth-child(4)::after{inset:26% 34%;border:0;background:rgba(113,126,214,.61);clip-path:polygon(0 0,100% 50%,0 100%)}
+.art-app-line{position:absolute;left:32%;right:32%;height:3px;bottom:18%;border-radius:10px;background:rgba(255,255,255,.6)}
+.art-ports{position:absolute;inset:33% 19%;display:flex;gap:9%;align-items:center}
+.art-ports::before{content:"";position:absolute;left:0;right:0;height:1px;top:50%;background:rgba(122,146,220,.47)}
+.art-ports i{position:relative;width:28%;height:100%;border-radius:10px;background:linear-gradient(145deg,rgba(235,238,255,.95),rgba(175,194,248,.56));border:1px solid rgba(148,170,226,.58);box-shadow:inset 0 1px 5px rgba(255,255,255,.9)}
+.art-ports i::after{content:"";position:absolute;inset:30%;border:1px solid rgba(100,132,199,.57);border-radius:4px}
+.art-orbit{position:absolute;inset:22% 28%;border:1px solid rgba(111,144,208,.4);border-radius:50%;background:radial-gradient(circle,rgba(189,211,255,.9) 0%,rgba(191,212,255,.4) 28%,transparent 30%)}
+.art-orbit::after{content:"";position:absolute;inset:18%;border:1px solid rgba(111,144,208,.42);border-radius:50%}
+.art-orbit i{position:absolute;width:7px;height:7px;border-radius:50%;background:#c2d4f9;border:1px solid rgba(115,146,204,.6)}
+.art-orbit i:nth-child(1){left:44%;top:-4px}
+.art-orbit i:nth-child(2){right:0;bottom:19%}
+.art-orbit i:nth-child(3){left:0;bottom:19%}
+.art-isa-blocks{position:absolute;inset:25% 24%;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:6px}
+.art-isa-blocks i{border:1px solid rgba(134,154,187,.3);border-radius:3px;background:linear-gradient(145deg,rgba(209,221,243,.68),rgba(228,237,251,.38))}
+.art-isa-blocks i:nth-child(3n){background:linear-gradient(145deg,rgba(181,201,238,.72),rgba(218,229,248,.46))}
+.art-silicon .art-plane{background:linear-gradient(140deg,#dbe2ec 0%,#f5f7fb 22%,#b8c3d6 47%,#e7edf7 71%,#b3bed0 100%);border-color:#f7faff;box-shadow:0 2px 0 #97a6be,0 5px 0 #7e8da6,0 7px 0 #c9d3e4,0 15px 26px rgba(35,51,83,.2),inset 0 0 0 5px rgba(243,247,255,.44)}
+.art-traces{position:absolute;inset:12%;border-radius:9px;border:1px solid rgba(108,131,168,.3);background:repeating-linear-gradient(0deg,transparent 0 12px,rgba(89,111,151,.18) 12px 13px,transparent 13px 19px),repeating-linear-gradient(90deg,transparent 0 12px,rgba(89,111,151,.18) 12px 13px,transparent 13px 19px)}
+.art-die{position:absolute;inset:23% 27%;display:flex;align-items:center;justify-content:center;border-radius:12px;border:1px solid rgba(240,246,255,.86);background:linear-gradient(145deg,#50617e,#2b3e60 52%,#607293);box-shadow:0 2px 1px #8a9ab3,0 5px 9px rgba(41,57,87,.28),inset 0 0 0 4px rgba(193,208,235,.13);overflow:hidden}
+.art-die span{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:26px;line-height:1;font-weight:500;letter-spacing:-1px;color:#e1eaff;text-shadow:0 1px 1px rgba(0,0,0,.1)}
+.art-die i{position:absolute;inset:9%;border:1px solid rgba(172,195,234,.15);border-radius:5px}
+.art-die i:last-child{inset:17%;border-radius:3px}
+.art-labels{position:absolute;inset:0;font:600 10px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.13em;color:var(--art-ink)}
+.art-labels span{position:absolute;left:82%;display:flex;align-items:center;white-space:nowrap;transform:translateY(-50%)}
+.art-labels span::before{content:"";position:absolute;right:calc(100% + 9px);height:1px;width:24px;background:linear-gradient(90deg,transparent,var(--art-line))}
+.art-labels span::after{content:"";position:absolute;right:calc(100% + 8px);height:3px;width:3px;border-radius:50%;background:var(--art-line)}
+.art-label-apps{top:24%}.art-label-api{top:36%}.art-label-os{top:48%}.art-label-isa{top:60%}.art-label-silicon{top:72%}
+.art-footnote{position:absolute;bottom:0;left:4%;right:2%;display:flex;gap:7px;align-items:center;justify-content:center;font:400 10px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.02em;color:var(--art-ink);opacity:.8}
+.art-footnote>span:last-child{margin-left:9px;font-size:8px;letter-spacing:.12em;opacity:.65}
+.art-status-dot{width:4px;height:4px;flex-shrink:0;background:#8d9fca;border-radius:50%;box-shadow:0 0 6px rgba(109,147,240,.28)}
+@keyframes art-float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 5px))}}
+html[data-theme="dark"] .architecture-art{--art-ink:#a5b1c6;--art-line:rgba(163,186,226,.4);--art-pane:rgba(65,83,124,.64);--art-edge:rgba(179,202,250,.5)}
+html[data-theme="dark"] .art-plane{background:linear-gradient(140deg,rgba(84,107,157,.75),var(--art-pane));box-shadow:0 2px 0 rgba(90,118,179,.7),0 5px 0 rgba(40,56,87,.8),0 12px 25px rgba(0,0,0,.18),inset 0 1px 10px rgba(187,208,255,.15)}
+html[data-theme="dark"] .art-apps .art-plane{background:linear-gradient(135deg,#71aefa 0%,#7681ed 49%,#a073d7 100%);box-shadow:0 2px 0 #8c9bec,0 5px 0 #434c95,0 12px 32px rgba(100,123,225,.2),inset 0 1px 16px rgba(255,255,255,.26)}
+html[data-theme="dark"] .art-silicon .art-plane{background:linear-gradient(140deg,#687895,#8b9ab1 22%,#4b5b77 47%,#7e8fa9 71%,#44516a 100%);box-shadow:0 2px 0 #7586a4,0 5px 0 #25324b,0 7px 0 #63728f,0 15px 26px rgba(0,0,0,.25),inset 0 0 0 5px rgba(227,236,255,.13)}
+html[data-theme="dark"] .art-halo{background:radial-gradient(ellipse at 47% 38%,rgba(80,117,226,.19),rgba(128,89,224,.1) 35%,transparent 69%)}
+html[data-theme="dark"] .art-grid{border-color:rgba(171,190,232,.15);background-image:linear-gradient(rgba(175,195,235,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(175,195,235,.12) 1px,transparent 1px)}
+html[data-theme="dark"] .art-ground{background:radial-gradient(ellipse,rgba(65,100,185,.22),rgba(35,55,101,.05) 45%,transparent 72%)}
+html[data-motion="off"] .architecture-art *,html[data-visible="false"] .architecture-art *,.architecture-art[data-in-view="false"] *{animation-play-state:paused!important}
+html[data-motion="off"] .art-scene{transform:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.architecture-art *{animation:none!important;transition:none!important}.architecture-art .art-scene{transform:none!important}}
+@media(max-width:600px){.architecture-art{max-width:340px;aspect-ratio:1.05}.art-labels{font-size:9px}.art-plane{border-radius:16px}.art-footnote{font-size:9px}.art-footnote>span:last-child{font-size:7px}.art-labels span::before{width:18px}.art-app-window{gap:8%}.art-app-window span::after{border-width:1.5px}.art-die span{font-size:22px}}
+@media print{.architecture-art{max-width:320px;break-inside:avoid}.architecture-art *{animation:none!important;transition:none!important}.art-scene{transform:none!important}}
+
+/* An offline, motion-aware editorial skin. All assets are drawn by CSS. */
+:root{color-scheme:light;--ink:#1d1d1f;--muted:#676971;--teal:#0066cc;--deep:#101320;--mint:#eae8ff;--paper:#f5f5f7;--line:#dfe1e8;--orange:#a94416;--softorange:#fff1e8;--blue:#25558d;--softblue:#edf4fd;--white:#fff;--surface:#fff;--surface-secondary:#eceef4;--glass:rgba(255,255,255,.76);--glass-border:rgba(255,255,255,.86);--purple:#7455dc;--shadow:0 12px 40px -18px #1d254624;--soft-shadow:0 8px 25px -14px #25294024;--page-glow:rgba(108,102,243,.075)}
+html[data-theme="dark"]{color-scheme:dark;--ink:#f0f1f7;--muted:#a1a5b5;--teal:#80b6ff;--deep:#080b17;--mint:#272c44;--paper:#080a10;--line:#282d3a;--orange:#ffc19f;--softorange:#33251f;--blue:#a1caff;--softblue:#1a2b42;--white:#171b27;--surface:#141822;--surface-secondary:#1c2230;--glass:rgba(18,22,34,.80);--glass-border:rgba(255,255,255,.10);--purple:#b4a0ff;--shadow:0 15px 48px -18px #0008;--soft-shadow:0 8px 25px -10px #0008;--page-glow:rgba(106,100,238,.09)}
+body{background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:-.015em;-webkit-font-smoothing:antialiased;transition:background .35s,color .35s}::selection{background:#b4beff66}h1,h2,h3{font-weight:650}h2{font-size:clamp(29px,3.2vw,44px);letter-spacing:-1.5px}h3{letter-spacing:-.6px}p{text-wrap:pretty}code{background:var(--surface-secondary)}a{transition:color .2s}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #859bff;outline-offset:4px}
+.topbar{height:68px;background:var(--glass);border-bottom:1px solid var(--glass-border);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%)}.topinner{padding:0 34px;gap:20px}.brand{font-size:15px;letter-spacing:-.4px;gap:10px}.brandmark{transform:none;width:24px;height:24px;gap:2px}.brandmark i{border-radius:4px;background:linear-gradient(145deg,#647fff,#8461e6);box-shadow:inset 0 0 0 .5px #ffffff55}.brandmark i:nth-child(2){opacity:.6}.brandmark i:nth-child(3){opacity:.8}.brandmark i:last-child{background:linear-gradient(145deg,#80b6ff,#ddadf9)}.topmeta{font-size:9px;color:var(--muted);letter-spacing:1.9px}.toplinks{gap:12px;font-size:12px}.toplinks>a{margin-right:5px;color:var(--muted)}.toplinks>a:hover{color:var(--teal)}.top-actions{display:flex;align-items:center;gap:7px}.control,.printbtn{font-size:11px;line-height:1.7;background:transparent;border:1px solid var(--line);border-radius:30px;padding:6px 12px;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;transition:background .2s,transform .2s,border-color .2s}.control:hover,.printbtn:hover{background:var(--surface);border-color:var(--muted)}.control:active,.printbtn:active{transform:scale(.96)}.control svg{width:13px;height:13px;flex-shrink:0}.motion-dot{width:6px;height:6px;background:#718af9;border-radius:50%;box-shadow:0 0 8px #718af950}.control[aria-pressed=true] .motion-dot{background:var(--muted);box-shadow:none}.progress{height:2px;background:linear-gradient(90deg,#508dff,#8f65df,#d094db);box-shadow:0 0 7px #8788ef55}.shell{grid-template-columns:162px minmax(0,1fr);gap:38px;padding:0 34px;max-width:1440px}.side{top:93px;padding-top:42px}.side-label{font-size:9px;letter-spacing:1.7px;color:var(--muted);margin-bottom:18px}.side nav{gap:3px}.side nav a{font-size:12px;padding:9px 12px;margin-left:-12px;border:0;border-radius:10px;gap:10px;transition:color .25s,background .25s,transform .25s}.side nav a span{font-size:9px;color:var(--muted);opacity:.65}.side nav a:hover{background:var(--surface-secondary);color:var(--ink)}.side nav a.active{background:var(--surface);box-shadow:var(--soft-shadow);color:var(--ink)}.side nav a.active span{color:var(--purple);opacity:1}.sidenote{font-size:11px;line-height:1.95;max-width:140px;border-color:var(--line)}.sidenote b{font-size:12px}.mobile-nav{border-color:var(--line)}
+.hero{padding:0 0 66px;position:relative}.hero-opening{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;min-height:580px;position:relative;isolation:isolate;gap:8px}.hero-opening:before{content:"";position:absolute;inset:15px -15px 0 0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 65% 42%,var(--page-glow),transparent 63%)}.hero-copy{padding:51px 0 35px;position:relative;z-index:2}.eyebrow{font-family:inherit;font-size:12px;font-weight:550;letter-spacing:1px;margin-bottom:24px;color:var(--purple);gap:8px}.eyebrow:before{background:var(--purple);width:5px;height:5px;box-shadow:0 0 0 4px #857cf111}.hero h1{font-size:clamp(44px,4.8vw,67px);line-height:1.16;font-weight:700;letter-spacing:-2.8px}.hero h1 em{display:block;color:#6969d9;background:linear-gradient(105deg,#397afa 0%,#8054d8 55%,#bb73ae 95%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:150% 100%}.hero h1 .title-line{display:block}.herotext{font-size:15px;line-height:1.95;max-width:455px;margin-top:24px;color:var(--muted)}.herotext strong{font-weight:550;color:var(--ink)}.herobottom{margin-top:27px;gap:14px}.button{background:#1672e7;color:#fff;border-radius:99px;padding:12px 19px;gap:20px;box-shadow:0 6px 17px -6px #0871e86b;font-size:12px;transition:transform .3s,box-shadow .3s,background .3s}.button:hover{transform:translateY(-2px);background:#2580ed;box-shadow:0 9px 22px -7px #0871e88c}.button span{transition:transform .3s}.button:hover span{transform:translateY(3px)}.hero-note{font-size:11px;color:var(--muted)}.hero-visual{margin-top:4px;background:linear-gradient(120deg,#111a30,#15152a 65%,#25203b);border-radius:24px;padding:28px 30px;box-shadow:0 18px 45px -25px #24224270;border:1px solid #ffffff1f;overflow:hidden}.hero-visual:after{content:"";position:absolute;top:-100px;right:-70px;width:330px;height:220px;border-radius:50%;background:radial-gradient(ellipse,#8474f331,transparent 70%);pointer-events:none}.visual-caption{font-size:9px;color:#a6b2ca;letter-spacing:1.5px;position:relative;z-index:1}.contract-node{background:#ffffff06;border:1px solid #ffffff20;border-radius:13px;padding:16px 12px;position:relative;z-index:1;transition:transform .3s,background .3s}.contract-node:hover{transform:translateY(-3px);background:#ffffff0c}.contract-node strong{color:#f1f4ff;font-size:15px;font-weight:550}.contract-node small{color:#9eaac4;font-size:11px}.contract-node.first{background:linear-gradient(120deg,#5784e5,#805ddd);border-color:#a4afff55;box-shadow:0 3px 20px #675bd333;color:white}.contract-node.first strong{color:white}.contract-node.first small{color:#e2e7ff}.linkline{color:#a4aad1;font-size:20px}.contract-caption{color:#aeb7ce;border-color:#ffffff18;font-size:12px}.three-takeaways{gap:16px;margin-top:21px}.take{background:var(--surface);border:1px solid var(--glass-border);border-radius:21px;padding:24px;box-shadow:var(--soft-shadow);transition:transform .35s,box-shadow .35s;position:relative}.take:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.take .num{font-size:10px;color:var(--purple);margin-bottom:14px}.take h3{font-size:16px;line-height:1.6;letter-spacing:-.3px}.take p{font-size:12px;line-height:1.95;color:var(--muted)}
+section.chapter{padding:74px 0;border-top-color:var(--line);scroll-margin-top:0}.sectionhead{margin-bottom:25px}.kicker{font:10px var(--mono);letter-spacing:2px;color:var(--purple);margin-bottom:13px}.sectionhead .aside{font-size:11px}.intro{font-size:15px;line-height:1.95;margin-bottom:31px}.intro strong{color:var(--ink)}.note{background:var(--surface-secondary);border:0;border-radius:15px;padding:17px 21px;font-size:12px;color:var(--muted);margin:25px 0}.note strong{color:var(--ink)}.note.orange{background:var(--softorange);color:var(--orange)}.note.orange strong{color:var(--orange)}.ref{color:var(--teal);font-size:10px}.map{gap:21px;align-items:stretch}.stack{gap:7px}.stackhead{color:var(--muted);font-size:10px;margin-bottom:8px}.layer{background:var(--surface);border:1px solid var(--glass-border);border-radius:13px;padding:13px 15px;grid-template-columns:34px minmax(0,1fr) 20px;box-shadow:0 2px 9px #18194004;transition:background .25s,transform .25s,box-shadow .25s,border-color .25s}.layer .lid{color:var(--muted);font-size:10px}.layer strong{font-size:14px}.layer small{font-size:10px;color:var(--muted);margin-top:3px}.layer .arr{color:var(--muted)}.layer:hover:not([aria-pressed=true]){background:var(--surface);border-color:#8187f044;transform:translateX(3px);box-shadow:var(--soft-shadow)}.layer[aria-pressed=true]{background:linear-gradient(110deg,#326ccd,#7553c9);border-color:#8187f077;box-shadow:0 6px 18px -6px #6155c870;color:white;transform:translateX(4px)}.layer[aria-pressed=true] small,.layer[aria-pressed=true] .lid,.layer[aria-pressed=true] .arr{color:#e0e7ff}.layer-detail{background:linear-gradient(145deg,var(--surface),var(--surface-secondary));border:1px solid var(--glass-border);box-shadow:var(--shadow);border-radius:23px;padding:30px;position:relative;overflow:hidden}.layer-detail:before{content:"";height:3px;background:linear-gradient(90deg,#5e9af7,#9c73d5,#d29ece);position:absolute;top:0;left:28px;right:28px;border-radius:0 0 3px 3px}.detailtag{color:var(--muted);font-size:9px;letter-spacing:1px}.detailnum{font-size:53px;font-weight:300;letter-spacing:-4px;color:#b9b9d5}.layer-detail h3{font-size:27px;letter-spacing:-1px}.layer-detail .analogy{color:var(--purple);font-size:15px;font-weight:500}.layer-detail .explain{font-size:13px;line-height:2;color:var(--ink)}.compare-pair{border-color:var(--line);gap:18px}.compare-pair span{color:var(--muted);font-size:9px}.compare-pair p{font-size:12px;color:var(--muted);line-height:1.95}.fault{font-size:12px;color:var(--muted)}.fault b{color:var(--ink);font-size:13px}.detail-source{font-size:11px;color:var(--muted)}.mini-concept{gap:20px}.concept{border-color:var(--line)}.concept b{color:var(--purple)}.concept h4{font-size:16px}.concept p{font-size:12px}.flowlabel{font-size:11px;color:var(--muted);margin:28px 0 13px}.flow{gap:10px}.flowbox{border:1px solid var(--glass-border);border-radius:16px;padding:20px 14px;background:var(--surface);box-shadow:var(--soft-shadow)}.flowbox b{font-size:14px}.flowbox span{font-size:12px}.flowbox.accent{background:var(--softblue);border-color:#548de427}.flowarrow{color:var(--purple);font-size:17px}.lane{background:var(--surface);border:1px solid var(--glass-border);border-radius:20px;padding:26px;box-shadow:var(--soft-shadow)}.lane-tag{font-size:9px;color:var(--purple)}.lane h3{font-size:18px}.lane p{font-size:13px;line-height:1.95}.inlinechain{font-size:12px;color:var(--teal);border-color:var(--line)}details{border-color:var(--line);padding:20px 1px}details summary{font-size:15px;line-height:1.75;font-weight:550;transition:color .2s}details summary:hover{color:var(--teal)}details summary:after{width:27px;height:27px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--surface-secondary);color:var(--muted);font-size:18px;transition:background .25s,color .25s,transform .25s}details[open] summary:after{color:var(--teal);background:var(--softblue)}details .details-body{line-height:2;font-size:13px;padding-top:18px;color:var(--muted)}
+.case-select{gap:7px;margin-bottom:21px;background:var(--surface-secondary);border-radius:17px;padding:6px;display:flex;flex-wrap:wrap;width:fit-content;max-width:100%}.case-select button{background:transparent;border:1px solid transparent;border-radius:12px;padding:9px 13px;font-size:12px;color:var(--muted);transition:background .25s,color .25s,transform .25s,box-shadow .25s}.case-select button:hover{color:var(--ink);background:var(--glass)}.case-select button[aria-pressed=true]{background:var(--surface);color:var(--ink);border-color:var(--glass-border);box-shadow:0 2px 8px #12162810}.case-select button:active{transform:scale(.97)}.case-stage{background:var(--surface);border:1px solid var(--glass-border);border-radius:24px;box-shadow:var(--shadow)}.case-top{padding:29px 31px 24px;border-color:var(--line)}.case-meta{color:var(--purple);font-size:9px;letter-spacing:1.5px}.case-top h3{font-size:25px;line-height:1.5;letter-spacing:-.75px}.case-top p{font-size:14px}.case-body{padding:26px 31px 29px}.statusgrid{gap:12px}.status{background:#edf6ef;color:#386647;border-radius:12px;padding:14px;font-size:11px;line-height:1.9}.status.bad{background:var(--softorange);color:var(--orange)}.status.maybe{background:var(--softblue);color:var(--blue)}.case-route{gap:8px}.case-route span{border:1px solid var(--line);border-radius:8px;font-size:11px;color:var(--muted);padding:8px 11px}.case-route span.bridge{background:var(--softblue);border-color:#678fda33;color:var(--teal)}.case-route i{color:var(--purple)}.case-copy{gap:31px}.case-copy h4{font-size:14px}.case-copy p{line-height:1.95;font-size:13px}.case-limit{border-color:var(--line);font-size:12px;padding-top:20px}.gpu-diagram{background:radial-gradient(ellipse at 30% -10%,#22437070,transparent 65%),linear-gradient(130deg,#10182a,#15152a 70%,#241d37);border:1px solid #ffffff18;border-radius:24px;padding:31px;box-shadow:0 16px 40px -25px #21213d80;color:#eef1ff}.gpu-diagram .flowlabel{color:#a5b2cf;font-size:11px}.gpu-node{border-color:#ffffff25;background:#ffffff06;border-radius:12px;padding:18px 11px;font-size:13px;color:#eef1ff;transition:transform .25s,background .25s}.gpu-node:hover{background:#ffffff0d;transform:translateY(-3px)}.gpu-node small{color:#abb6d0;font-size:10px}.gpu-node.bridge{background:linear-gradient(130deg,#d4defd,#dacdf7);border-color:#ffffff50;color:#303358}.gpu-node.bridge small{color:#575480}.gpu-caption,.shader-lane{color:#abb6d0;font-size:12px}.shader-lane{border-color:#ffffff1d}.shader-lane b{color:#eef1ff}.explain-item{border-color:var(--line);padding-top:23px}.explain-item h3{font-size:18px}.explain-item p{line-height:2}.native-compare{background:var(--surface);border:1px solid var(--glass-border);border-radius:17px;padding:23px;box-shadow:var(--soft-shadow)}.native-compare h4{margin-bottom:10px}.model-diagram{background:linear-gradient(135deg,var(--surface-secondary),var(--surface));border:1px solid var(--glass-border);border-radius:24px;padding:31px;box-shadow:var(--shadow)}.model-top{border-radius:16px;background:linear-gradient(120deg,#296bc0,#7357bd);max-width:460px;padding:24px;box-shadow:0 7px 22px -10px #645dcf7a}.model-top b{font-size:21px;letter-spacing:-.5px}.model-top span{color:#e2e4fa;font-size:12px}.branch-label{font-size:12px;color:var(--muted);margin:20px 0}.model-paths{gap:15px}.model-path{border-radius:17px;background:var(--surface);border:1px solid var(--line);padding:22px;transition:transform .3s,box-shadow .3s}.model-path:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.model-path .pathlabel{font-size:9px;color:var(--purple);letter-spacing:.5px}.model-path b{font-size:17px}.model-path p{font-size:12px;line-height:1.95}.model-path .down{color:var(--purple);margin:13px 0}.model-end{background:var(--surface-secondary);color:var(--ink);border-radius:9px;font-size:12px;padding:11px}.model-foot{font-size:11px;color:var(--muted);line-height:1.9;margin-top:21px}.two-cols{gap:29px}.two-cols h3{font-size:21px;letter-spacing:-.6px}.two-cols p{font-size:14px;line-height:1.95}.code-panel{background:linear-gradient(135deg,#131d30,#19172c);border:1px solid #ffffff18;border-radius:20px;padding:26px;box-shadow:0 12px 28px -17px #13193180;color:#e0e6fb}.code-panel .code-caption{color:#a4b1d1;font-size:10px}.code-panel .comment{color:#91a6d5}.code-panel .code-foot{color:#aeb9d7;border-color:#ffffff18;font-size:11px}.three-metrics{background:var(--surface);border:1px solid var(--glass-border);border-radius:20px;box-shadow:var(--soft-shadow)}.metric{padding:25px}.metric+.metric{border-color:var(--line)}.metric span{font-size:9px;color:var(--purple);letter-spacing:1px}.metric h4{font-size:18px}.metric p{font-size:13px}.table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--soft-shadow)}table{font-size:13px}th{background:var(--surface-secondary);color:var(--muted);font-size:12px;padding:17px 20px}td{border-color:var(--line);padding:19px 20px;font-size:12px}tbody tr:hover{background:var(--page-glow)}.checklist{gap:0 34px}.check{border-color:var(--line);padding:25px 0}.check:before{color:var(--purple);font-size:11px}.check h3{font-size:17px}.check p{font-size:13px}.final-callout{border-radius:24px;padding:35px;background:radial-gradient(ellipse at 100% 0,#6d4ea23b,transparent 65%),linear-gradient(130deg,#111c30,#1d1831);color:#f1f1fb;font-size:26px;letter-spacing:-.7px;line-height:1.65;border:1px solid #ffffff18;box-shadow:0 20px 40px -26px #3d285d8c}.final-callout span{font-size:13px;color:#aeb6ce;letter-spacing:0;line-height:1.95;margin-top:17px}.sources-list{gap:0 26px}.source{border-color:var(--line);padding:18px 0}.source .source-num{color:var(--purple)}.source a{font-size:12px;color:var(--ink);line-height:1.8}.source a:hover{color:var(--teal)}.source p{font-size:11px}.source:target{background:var(--softblue);border-radius:8px}.footer{border-color:var(--line);font-size:11px}.noscript{background:var(--softorange);border-radius:12px}.skip{color:#0066cc!important}
+html[data-theme="dark"] .hero h1 em{background-image:linear-gradient(110deg,#83baff,#b39aff 53%,#e4b0df)}html[data-theme="dark"] .detailnum{color:#545d7c}html[data-theme="dark"] .status.good{background:#1c3028;color:#acd5b5}html[data-theme="dark"] .status:not(.bad):not(.maybe){background:#1c3028;color:#acd5b5}html[data-theme="dark"] .layer[aria-pressed=true]{background:linear-gradient(110deg,#254d88,#584299)}html[data-theme="dark"] .hero-visual,html[data-theme="dark"] .gpu-diagram{border-color:#454b6a55;box-shadow:0 25px 50px -20px #0008}html[data-theme="dark"] .control svg{color:#b6c2ee}html[data-theme="dark"] .button{background:#357de1;color:#fff}html[data-theme="dark"] .take,html[data-theme="dark"] .case-stage,html[data-theme="dark"] .layer-detail{box-shadow:0 10px 35px -15px #0007}
+@media(min-width:1550px){.shell,.topinner{max-width:1500px}.shell{grid-template-columns:172px minmax(0,1fr);gap:48px}.hero-opening{min-height:610px}.hero h1{font-size:73px}}
+@media(max-width:1170px){.topmeta{display:none}.topinner{padding:0 26px}.shell{grid-template-columns:145px minmax(0,1fr);padding:0 26px;gap:27px}.hero-opening{min-height:535px;grid-template-columns:1.13fr .87fr}.hero h1{font-size:clamp(39px,4.5vw,57px);letter-spacing:-2px}.herotext{font-size:14px}.hero-note{font-size:10px}.herobottom{gap:12px}.take{padding:21px}.take h3{font-size:15px}.layer-detail{padding:25px}.layer{padding:12px 12px}.model-path{padding:19px}.model-path b{font-size:16px}.case-select button{padding:9px 11px;font-size:11px}.toplinks{gap:8px}}
+@media(max-width:950px){.shell{grid-template-columns:126px minmax(0,1fr);gap:24px;padding:0 24px}.side nav a{font-size:11px;padding:9px 8px;gap:8px;margin-left:-8px}.sidenote{max-width:115px;font-size:10px}.toplinks>a{display:none}.hero-opening{min-height:515px;grid-template-columns:1fr .8fr}.hero h1{font-size:43px}.hero-copy{padding-top:38px}.eyebrow{font-size:10px}.herobottom{align-items:flex-start;flex-direction:column;gap:10px}.take{padding:18px}.take h3{font-size:14px}.case-select{width:100%}.map{grid-template-columns:1fr 1.1fr;gap:17px}.layer{grid-template-columns:24px minmax(0,1fr) 12px;gap:7px;padding:13px 10px}.layer strong{font-size:12px}.layer small{font-size:9px}.layer-detail{padding:23px}.layer-detail h3{font-size:23px}.model-paths{gap:11px}.model-path{padding:17px}.model-path b{font-size:15px}.flow{gap:6px}.flowbox{padding:16px 11px}.flowbox b{font-size:13px}}
+@media(max-width:860px){.shell{display:block;padding:0 26px;max-width:790px}.side{display:none}.topinner{padding:0 23px}.topbar{height:64px}.hero-opening{min-height:490px;grid-template-columns:1.04fr .96fr}.hero h1{font-size:48px}.hero-copy{padding:35px 0}.herobottom{flex-direction:row;align-items:center}.hero-note{font-size:10px}.mobile-nav{padding:17px 0;font-size:11px;gap:23px}.map{grid-template-columns:1fr 1.05fr}.layer strong{font-size:13px}.layer{padding:13px 12px}.three-takeaways{gap:13px}.hero{padding-bottom:56px}.chapter{padding:59px 0!important}.toplinks{gap:0}.brand{font-size:14px}.hero-visual{padding:26px}.gpu-diagram,.model-diagram{padding:27px}.sectionhead .aside{display:none}.case-select button{padding:9px 11px;font-size:11px}}
+@media(max-width:650px){.shell{padding:0 19px}.topinner{padding:0 18px;gap:8px}.brand{font-size:13px;gap:8px}.brandmark{width:21px;height:21px}.top-actions{gap:6px}.control{font-size:10px;padding:6px 9px}.control svg{width:12px;height:12px}.printbtn{font-size:10px;padding:6px 9px}.top-actions .printbtn{display:none}.topbar{height:60px}.hero-opening{grid-template-columns:1fr;min-height:auto;gap:0;text-align:center;padding-bottom:9px}.hero-copy{padding:39px 0 0}.eyebrow{justify-content:center;font-size:10px;letter-spacing:1.1px;margin-bottom:22px}.hero h1{font-size:clamp(43px,9.5vw,58px);line-height:1.16;letter-spacing:-2px}.hero h1 .title-line{display:inline}.hero h1 em{display:block}.herotext{font-size:14px;max-width:420px;margin:21px auto 0;line-height:1.9}.herotext br{display:none}.herobottom{justify-content:center;margin-top:22px;gap:11px;flex-direction:row;align-items:center}.button{font-size:12px;padding:11px 18px;gap:17px}.hero-note{font-size:10px;white-space:nowrap}.hero-visual{margin-top:3px;padding:23px 20px;border-radius:21px}.hero-visual .visual-caption{font-size:8px;letter-spacing:1px}.hero-visual .contract-node strong{font-size:14px}.hero-visual .contract-node small{font-size:10px}.contract-node{border-radius:11px;padding:13px 9px}.contract-caption{font-size:11px;line-height:1.9}.three-takeaways{grid-template-columns:1fr;gap:11px;margin-top:16px}.take{border:1px solid var(--glass-border);border-radius:17px;display:grid;grid-template-columns:25px 1fr;padding:18px 19px;gap:10px}.take .num{margin:4px 0 0}.take h3{font-size:15px;margin-bottom:5px}.take p{font-size:12px}.hero{padding-bottom:40px}.chapter{padding:44px 0!important}h2{font-size:29px;line-height:1.35;letter-spacing:-1px}.sectionhead{margin-bottom:20px}.kicker{font-size:9px;letter-spacing:1.6px;margin-bottom:11px}.intro{font-size:14px;line-height:1.95;margin-bottom:25px}.map{grid-template-columns:1fr;gap:17px}.stack{display:grid;grid-template-columns:1fr 1fr;gap:7px}.stackhead{grid-column:1/-1;font-size:9px}.layer{min-height:65px;grid-template-columns:25px minmax(0,1fr);padding:12px 11px;border-radius:12px;gap:7px}.layer .arr{display:none}.layer strong{font-size:12px;line-height:1.5}.layer small{font-size:9px;margin-top:2px}.layer[aria-pressed=true]{transform:none}.layer:hover:not([aria-pressed=true]){transform:none}.map .layer:last-child{grid-column:1/-1}.layer-detail{padding:25px;min-height:0;border-radius:20px}.layer-detail h3{font-size:25px}.layer-detail .explain{font-size:13px}.layer-detail .analogy{font-size:14px}.detailnum{font-size:43px}.detailtag{font-size:8px;margin-bottom:18px}.compare-pair{margin:21px 0;padding:20px 0}.compare-pair p{font-size:12px}.fault{font-size:12px}.mini-concept,.split-run,.explain-grid,.two-cols,.checklist,.glossary,.sources-list{grid-template-columns:1fr}.mini-concept{gap:0}.concept{padding:19px 0}.concept b{float:left;margin:3px 15px 0 0}.concept h4{margin:0 0 5px}.flow{flex-direction:column;gap:5px}.flowbox{padding:16px;display:flex;align-items:baseline;justify-content:space-between;gap:13px}.flowbox b{font-size:13px;flex-shrink:0}.flowbox span{margin:0;font-size:11px;text-align:right}.flowarrow{justify-content:center;font-size:0;height:17px}.flowarrow:after{content:"↓";font-size:17px}.lane{padding:23px;border-radius:18px}.lane h3{font-size:17px}.lane p{font-size:13px}.inlinechain{font-size:12px}.note{padding:16px 18px;font-size:12px;line-height:1.95;border-radius:13px}.case-select{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;border-radius:16px}.case-select button{padding:10px 8px;font-size:11px}.case-stage{border-radius:20px}.case-top{padding:23px 22px 20px}.case-meta{font-size:8px;letter-spacing:.6px;line-height:1.8}.case-top h3{font-size:21px}.case-top p{font-size:13px}.case-body{padding:22px}.statusgrid{grid-template-columns:1fr;gap:8px}.status{display:flex;gap:10px;align-items:baseline;font-size:11px;line-height:1.8;padding:11px;border-radius:9px}.status strong{margin:0;flex:0 0 98px}.case-route{gap:6px;margin-bottom:22px}.case-route span{font-size:10px;padding:7px 9px}.case-copy{grid-template-columns:1fr;gap:19px}.case-copy h4{font-size:13px}.case-copy p{font-size:12px}.case-limit{font-size:11px}.gpu-diagram{padding:24px 21px;border-radius:20px}.gpu-row{grid-template-columns:1fr;gap:6px}.gpu-node{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;border-radius:10px;padding:14px}.gpu-node small{margin:0;text-align:right;font-size:10px}.gpu-row .linkline{font-size:0;height:18px;line-height:18px}.gpu-row .linkline:after{content:"↓";font-size:17px}.shader-lane{font-size:11px}.gpu-caption{font-size:11px;line-height:1.9}.explain-grid{gap:25px}.explain-item h3{font-size:17px}.explain-item p{font-size:13px}.model-diagram{padding:24px 20px;border-radius:21px}.model-top{padding:21px 15px;border-radius:13px}.model-top b{font-size:19px}.model-top span{font-size:11px}.model-paths{grid-template-columns:1fr;gap:12px}.model-path{padding:20px;border-radius:14px}.model-path .pathlabel{font-size:9px;margin-bottom:10px}.model-path b{font-size:17px}.model-path p{font-size:12px;margin-top:8px}.model-path .down{margin:9px}.model-end{font-size:12px}.model-foot{font-size:11px}.branch-label{font-size:11px;line-height:1.9;margin:17px 0}.two-cols{gap:25px}.two-cols h3{font-size:20px}.two-cols p{font-size:13px}.code-panel{padding:22px 19px;border-radius:17px}.code-panel pre{font-size:11px;line-height:1.95}.code-panel .code-caption{font-size:9px;gap:10px}.code-panel .code-foot{font-size:11px}.three-metrics{grid-template-columns:1fr;border-radius:17px}.metric{padding:22px}.metric+.metric{border-left:0;border-top:1px solid var(--line)}.metric h4{font-size:18px}.metric p{font-size:12px}.table-wrap{border-radius:15px}.check{padding:22px 0}.check h3{font-size:16px}.check p{font-size:12px}.final-callout{font-size:21px;line-height:1.75;padding:26px 23px;border-radius:20px}.final-callout span{font-size:12px}details{padding:19px 0}details summary{font-size:14px;line-height:1.8;gap:15px}details .details-body{font-size:12px}.sources-list{gap:0}.source{padding:17px 0}.source a{font-size:12px}.source p{font-size:11px}.footer{font-size:10px}.mobile-nav{font-size:11px;padding:16px 0;gap:21px}.sidenote{display:none}}
+@media(max-width:370px){.topinner{padding:0 13px}.shell{padding:0 16px}.brand{font-size:11px;gap:6px}.brandmark{width:19px;height:19px}.control{font-size:9px;padding:5px 8px;gap:4px}.control svg{width:11px;height:11px}.top-actions{gap:5px}.hero h1{font-size:43px}.hero-note{font-size:9px}.herobottom{gap:10px}.eyebrow{font-size:9px;letter-spacing:.8px}.layer-detail{padding:22px}.detailtag{letter-spacing:.3px}.status strong{flex-basis:92px}.mobile-nav{gap:18px}.code-panel .code-caption{font-size:8px}h2{font-size:27px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.layer[aria-pressed=true],.take:hover,.button:hover,.model-path:hover,.gpu-node:hover{transform:none!important}}
+html[data-motion="off"]{scroll-behavior:auto}html[data-motion="off"] *,html[data-motion="off"] *:before,html[data-motion="off"] *:after{animation:none!important;transition:none!important}
+@media print{:root,html[data-theme="dark"]{color-scheme:light;--ink:#1d1d1f;--muted:#5c5e68;--teal:#165aae;--paper:#fff;--surface:#fff;--surface-secondary:#f0f1f5;--line:#dddfe6;--glass-border:#dddfe6;--purple:#604f9d;--softblue:#edf3fb;--softorange:#fff1e8;--orange:#a94416}body{background:#fff!important;color:#1d1d1f!important}.topbar,.side,.mobile-nav,.herobottom,.architecture-art{display:none!important}.hero-opening{display:block;min-height:0;text-align:left}.hero-opening:before{display:none}.hero-copy{padding:0}.hero{padding-top:0}.hero h1{font-size:32pt;line-height:1.2}.hero h1 em{background:none;-webkit-text-fill-color:#6552b1;display:inline}.hero h1 .title-line{display:inline}.hero-visual,.gpu-diagram,.model-top,.code-panel,.final-callout{print-color-adjust:exact;-webkit-print-color-adjust:exact;box-shadow:none}.hero-visual{margin-top:20px}.chapter{padding:25px 0!important}.take,.layer-detail,.case-stage,.flowbox,.lane,.model-diagram,.table-wrap,.three-metrics{box-shadow:none!important}h2{font-size:22pt}.take{padding:16px}.case-print .case-stage{display:block;border:1px solid #dddfe6}.case-select{display:none}.case-print .case-top h3{font-size:15pt}.case-copy p,.case-limit,.case-top p{font-size:10pt}.case-top,.case-body{padding:18px}.hero h1 em{display:inline}.hero-copy,.hero-visual,.three-takeaways{break-inside:avoid}.model-path:hover,.take:hover{transform:none}*,*:before,*:after{animation:none!important;transition:none!important}.source{padding:12px 0}.footer{font-size:9pt}}
+
+@media(pointer:coarse){.control{min-height:40px;min-width:48px}.case-select button{min-height:44px}.mobile-nav a{display:flex;align-items:center;min-height:34px}details summary{min-height:34px}}
+/* Avoid an empty-looking row between the last list item and the next section. */
+@media screen{
+  section.chapter{padding-bottom:24px!important}
+  section.chapter>:last-child{margin-bottom:0}
+  section.chapter:has(> details:last-child),section#sources.chapter{padding-bottom:0!important}
+  section.chapter>details:last-child{border-bottom:0}
+  .glossary{align-items:start}
+  #sources .sources-list{margin-top:12px}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar"><div class="topinner"><a class="brand" href="#top"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>计算机兼容性地图</a><span class="topmeta">COMPUTING, LAYER BY LAYER</span><div class="toplinks"><a href="#sources">26 份一手资料 ↗</a><div class="top-actions"><button type="button" class="control" id="theme-toggle" aria-label="切换到深色外观" aria-pressed="false"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16.8 11.8A7.2 7.2 0 0 1 8.2 3.2 7.2 7.2 0 1 0 16.8 11.8Z"/></svg><span data-control-label>浅色</span></button><button type="button" class="control" id="motion-toggle" aria-label="关闭页面动效" aria-pressed="false"><span class="motion-dot" aria-hidden="true"></span><span data-control-label>动效开</span></button><button class="printbtn" type="button" id="print">打印 / PDF</button></div></div></div><div class="progress" id="progress" aria-hidden="true"></div></header>
+<div class="shell">
+<aside class="side"><p class="side-label">ON THIS PAGE</p><nav aria-label="阅读目录"><a href="#overview" class="active"><span>00</span>先建立直觉</a><a href="#layers"><span>01</span>九层兼容性地图</a><a href="#execution"><span>02</span>程序实际怎么跑</a><a href="#cases"><span>03</span>六个典型案例</a><a href="#games"><span>04</span>游戏与 GPU</a><a href="#ai"><span>05</span>CUDA 与本地 AI</a><a href="#bridges"><span>06</span>各种方案补哪层</a><a href="#check"><span>07</span>自己判断兼容性</a><a href="#sources"><span>08</span>术语与参考资料</a></nav><div class="sidenote"><b>理解兼容性的边界</b>从 CPU 指令、系统接口，到 GPU 计算后端，全面理解程序运行从底至上的金字塔逻辑，追踪跨平台运行时需要满足的约定。</div></aside>
+<main id="main">
+<nav class="mobile-nav" aria-label="快捷目录"><a href="#layers">分层地图</a><a href="#cases">案例</a><a href="#games">游戏</a><a href="#ai">AI</a><a href="#bridges">解决方案</a><a href="#sources">来源</a></nav>
+<section class="hero" id="overview">
+<div class="hero-opening"><div class="hero-copy"><div class="eyebrow">一次看懂，从芯片到应用</div>
+<h1>都是计算机，<br><span class="title-line">为什么程序</span><em>不能通用？</em></h1>
+<p class="herotext">从 Mac、Windows 到游戏与 AI，看懂一个共同规律：<br><strong>程序能运行，需要一整套约定对得上。</strong>CPU 听懂指令，只是其中一关。</p>
+<div class="herobottom"><a class="button" href="#layers">打开分层地图 <span aria-hidden="true">↓</span></a><span class="hero-note">9 层地图 · 6 个案例</span></div>
+</div>
+<div id="architecture-art" class="architecture-art" data-in-view="true" role="img" aria-label="玻璃平板与芯片组成的分层概念装置，标出应用、接口、系统、指令集和芯片等观察位置；不是完整层级划分，也不代表程序的实际调用顺序。">
+  <div class="art-halo" aria-hidden="true"></div>
+  <div class="art-scene" aria-hidden="true">
+    <div class="art-ground"></div>
+    <div class="art-slab art-silicon">
+      <div class="art-plane"><div class="art-traces"></div><div class="art-die"><i></i><span>Si</span><i></i></div></div>
+    </div>
+    <div class="art-slab art-isa">
+      <div class="art-plane"><div class="art-grid"></div><div class="art-isa-blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
+    <div class="art-slab art-os">
+      <div class="art-plane"><div class="art-grid"></div><div class="art-orbit"><i></i><i></i><i></i></div></div>
+    </div>
+    <div class="art-slab art-api">
+      <div class="art-plane"><div class="art-grid"></div><div class="art-ports"><i></i><i></i><i></i></div></div>
+    </div>
+    <div class="art-slab art-apps">
+      <div class="art-plane"><div class="art-app-dots"><i></i><i></i><i></i></div><div class="art-app-window"><span></span><span></span><span></span><span></span></div><div class="art-app-line"></div></div>
+    </div>
+    <div class="art-labels"><span class="art-label-apps">APPS</span><span class="art-label-api">API</span><span class="art-label-os">OS</span><span class="art-label-isa">ISA</span><span class="art-label-silicon">SILICON</span></div>
+  </div>
+  <div class="art-footnote" aria-hidden="true"><span class="art-status-dot"></span> 多层约定，共同协作 <span>CONCEPT VIEW</span></div>
+</div>
+
+</div>
+<div class="hero-visual" role="img" aria-label="兼容性由多种约定共同决定：程序需要匹配的运行环境、系统接口和硬件指令。任一必要条件不满足都可能失败。">
+<div class="visual-caption"><span>ONE PROGRAM. MULTIPLE CONTRACTS.</span><span>概念关系图</span></div>
+<div class="contract-line"><div class="contract-node first"><strong>一份程序</strong><small>代码 + 依赖 + 数据</small></div><div class="linkline" aria-hidden="true">→</div><div class="contract-node"><strong>运行环境</strong><small>格式 / ABI / 框架</small></div><div class="linkline" aria-hidden="true">＋</div><div class="contract-node"><strong>系统接口</strong><small>API / 内核 / 驱动</small></div><div class="linkline" aria-hidden="true">＋</div><div class="contract-node"><strong>硬件指令</strong><small>CPU / GPU / 特性</small></div></div>
+<p class="contract-caption">兼容 ≈ 程序所需的约定，环境都能满足。缺口可以通过移植、转译或兼容实现来补；某一处补上，不代表所有问题都解决。</p>
+</div>
+<div class="three-takeaways">
+<article class="take"><span class="num">01 /</span><div><h3>Rosetta 不提供 Windows 环境</h3><p>常见用途是让 Apple 芯片运行 Intel 版 Mac 应用。Windows 程序还需要 Windows 的接口与依赖。<a class="ref" href="#s1">[1]</a><a class="ref" href="#s7">[7]</a></p></div></article>
+<article class="take"><span class="num">02 /</span><div><h3>游戏不兼容，不只看显卡强弱</h3><p>CPU 代码、图形 API、着色器、驱动和反作弊，各自可能形成门槛。<a class="ref" href="#s9">[9]</a><a class="ref" href="#s10">[10]</a><a class="ref" href="#s20">[20]</a></p></div></article>
+<article class="take"><span class="num">03 /</span><div><h3>模型数据可以换一套实现来计算</h3><p>Mac 上的推理引擎可用 Metal 等后端做相同数学运算，无须原样运行 CUDA 代码。<a class="ref" href="#s14">[14]</a><a class="ref" href="#s15">[15]</a></p></div></article>
+</div>
+</section>
+<section class="chapter" id="layers">
+<div class="sectionhead"><div><span class="kicker">01 / THE MAP</span><h2>从底层到上层，究竟有些什么？</h2></div><span class="aside">点击任意一层，查看差异与补法</span></div>
+<p class="intro">把一台计算机想成一座协作工厂：电路实际做运算，指令集规定机器听懂什么，系统提供服务，框架再把细节包装成应用。<strong>越往上越接近人的任务，越往下越接近物理执行。</strong></p>
+<div class="map"><div class="stack" id="layer-stack" role="group" aria-label="选择一个计算机层次"><div class="stackhead"><span>上层应用 ↓ 底层硬件</span><span>点选一层，查看解释</span></div><button class="layer" id="layer-8" type="button" data-layer="8" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L8</span><span><strong>应用与数据</strong><small>Apps & Data</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-7" type="button" data-layer="7" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L7</span><span><strong>框架与运行时</strong><small>Frameworks & Runtimes</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-6" type="button" data-layer="6" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L6</span><span><strong>平台 API 与库</strong><small>APIs & Libraries</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-5" type="button" data-layer="5" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L5</span><span><strong>二进制格式与 ABI</strong><small>Binary Format & ABI</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-4" type="button" data-layer="4" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L4</span><span><strong>操作系统内核</strong><small>OS Kernel</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-3" type="button" data-layer="3" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L3</span><span><strong>设备驱动</strong><small>Device Drivers</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-2" type="button" data-layer="2" aria-pressed="true" aria-controls="layer-detail"><span class="lid">L2</span><span><strong>指令集 ISA</strong><small>Instruction Set</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-1" type="button" data-layer="1" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L1</span><span><strong>微架构与硬件</strong><small>Microarchitecture</small></span><span class="arr" aria-hidden="true">↗</span></button><button class="layer" id="layer-0" type="button" data-layer="0" aria-pressed="false" aria-controls="layer-detail"><span class="lid">L0</span><span><strong>数字电路</strong><small>Digital Logic</small></span><span class="arr" aria-hidden="true">↗</span></button></div><article class="layer-detail" id="layer-detail" aria-live="polite" aria-atomic="true"><div class="detailtag"><span>SELECTED LAYER / 所选层</span><span class="detailnum">02</span></div><h3>指令集 ISA</h3><p class="analogy">像处理器认识的词典与语法，同样一串符号在另一种语言中可能完全没有意义。</p><p class="explain">ISA 规定处理器可见的指令、寄存器和执行规则。x86-64 与 Arm64 使用不同编码，给前者编译的机器码不能交给后者直接照读；同一指令集家族也可能存在可选扩展差异。CPU 与 GPU 各有执行代码的体系，GPU 指令并不由 CPU 的 x86 或 Arm 标签决定。因此 CPU 二进制转译能解决一类指令差异，却不会自动把 NVIDIA GPU 代码转换成 Apple GPU 代码。</p><div class="compare-pair"><div><span>WINDOWS / 示例</span><p>常见 Windows PC 使用 x86-64；Windows 也有 Arm64 版本，可通过系统模拟层运行许多 x86/x64 应用。</p></div><div><span>MAC / 示例</span><p>Intel Mac 使用 x86-64；Apple silicon 使用 Arm64，Rosetta 可转译受支持的 Intel Mac 应用。</p></div></div><div class="fault"><b>可能卡在哪里？</b>处理器不认识目标指令，或缺少程序要求的扩展；“同为 64 位”不足以证明机器码兼容。<b>通常怎么补？</b>为目标 ISA 重新编译，或使用 Rosetta、Windows 模拟层等适用的二进制转译；其支持范围各不相同。</div><p class="detail-source">进一步查阅 <a class="ref" href="#s1">[1]</a> <a class="ref" href="#s6">[6]</a> <a class="ref" href="#s12">[12]</a> <a class="ref" href="#s23">[23]</a></p></article></div>
+<div class="print-extra" id="layer-print"><article class="print-entry"><h3>L8 / 应用与数据</h3><p><strong>应用像做菜的厨师，数据像食材；带走食材，不等于带走整间厨房。</strong> 这是读者最熟悉的一层：办公软件、游戏、聊天界面，以及文档、纹理、模型权重等内容。应用组织功能，数据提供要处理的材料；两者的可移植性不同。同一份模型权重可能被不同平台的推理引擎读取，但还要匹配模型结构、文件格式与算子支持。软件厂商是否发布、测试和维护对应版本，也决定了“理论上可实现”能否成为可靠产品。</p><p>Windows：Windows 版游戏包含程序、资源、插件，可能还依赖启动器与反作弊服务。<br>Mac：Mac 版应用可读取同类文档或模型数据，但通常需要自己的可执行程序和依赖。</p><p><strong>卡点：</strong>没有对应平台版本，或引擎不能解析数据格式、执行模型结构；插件与反作弊也可能成为独立障碍。<br><strong>补法：</strong>获取厂商适配版本；使用支持该格式和模型的应用，必要时转换数据，并核对插件及服务支持。 <a class="ref" href="#s19">[19]</a> <a class="ref" href="#s20">[20]</a> <a class="ref" href="#s26">[26]</a></p></article><article class="print-entry"><h3>L7 / 框架与运行时</h3><p><strong>像连锁店统一的工作手册，由各地团队用当地设备完成同一项任务。</strong> 框架和运行时替应用处理常见工作，例如解释 Python、执行游戏逻辑，或把矩阵运算交给加速器。它们把部分平台差异藏在统一接口后面，因此一份上层代码可以在多种电脑上使用。但运行时本身仍须适配操作系统与 CPU；它加载的原生扩展也有架构限制。AI 框架更需要具体计算后端：切换到 Metal 或 MPS，意味着使用另一套已实现的执行路径。</p><p>Windows：Python、游戏引擎或 AI 框架运行于 Windows；GPU 后端可按框架支持选择 CUDA 等。<br>Mac：Python、原生推理引擎或 AI 框架运行于 macOS；可通过 Metal、MPS、MLX 等路径计算。</p><p><strong>卡点：</strong>缺少平台版本的原生扩展，或计算后端缺算子、数据类型、自定义内核；改一个设备名称未必能运行。<br><strong>补法：</strong>安装匹配系统与架构的运行时和依赖；选择受支持的后端，替换专用算子，并按需使用 CPU 回退。 <a class="ref" href="#s14">[14]</a> <a class="ref" href="#s15">[15]</a> <a class="ref" href="#s16">[16]</a> <a class="ref" href="#s17">[17]</a> <a class="ref" href="#s22">[22]</a></p></article><article class="print-entry"><h3>L6 / 平台 API 与库</h3><p><strong>像服务窗口的菜单：你提出的请求，必须有人理解并提供对应服务。</strong> API 是程序调用功能的约定，库则提供许多功能的具体实现。创建窗口、播放声音、绘制画面和提交 GPU 运算，都可能使用平台接口。Windows 与 macOS 的服务名称、参数和行为并不完全相同，因此 CPU 即使认识程序的指令，也不代表能完成它请求的服务。API 不等于系统调用：很多工作在用户态库里完成，只有需要内核服务的部分才跨入内核。</p><p>Windows：Win32 提供桌面系统接口；Direct3D 用于图形；CUDA 提供 NVIDIA GPU 计算相关接口与库。<br>Mac：AppKit 等提供桌面接口；Metal 提供图形与计算接口，配合 MPS 等库执行相应任务。</p><p><strong>卡点：</strong>应用请求的接口或语义不存在；Direct3D、Metal、CUDA 也不能仅凭名称相近就互换。<br><strong>补法：</strong>开发者移植接口，或使用 Wine、图形转换层等实现适配；覆盖范围、性能和功能需要分别验证。 <a class="ref" href="#s7">[7]</a> <a class="ref" href="#s9">[9]</a> <a class="ref" href="#s11">[11]</a> <a class="ref" href="#s12">[12]</a></p></article><article class="print-entry"><h3>L5 / 二进制格式与 ABI</h3><p><strong>既要认得包裹的包装清单，也要约定收件人怎样接过里面的东西。</strong> 可执行文件除了机器指令，还记录代码、数据、依赖与加载信息；PE、Mach-O、ELF 是不同组织方式。ABI 是编译后组件互相配合的契约，例如参数放哪些寄存器、数据如何排列、栈和异常怎样处理。这里将它们单列为检查项，但 ABI 实际跨越多个层次，并不是运行时必须穿过的一块独立软件。文件格式和 CPU 架构相同，也不代表整套契约兼容。</p><p>Windows：Windows 可执行文件和 DLL 常用 PE；Windows 的调用约定与系统依赖构成目标平台的一部分。<br>Mac：macOS 原生可执行代码使用 Mach-O；Universal 应用可以包含分别面向 Intel 和 Apple silicon 的代码。</p><p><strong>卡点：</strong>加载器不认识文件，依赖库无法加载，或调用方与被调用方按不同规则传递参数和数据。<br><strong>补法：</strong>针对目标平台重新构建程序与依赖，或使用理解源平台格式和执行规则的兼容环境；改后缀没有作用。 <a class="ref" href="#s3">[3]</a> <a class="ref" href="#s4">[4]</a> <a class="ref" href="#s5">[5]</a> <a class="ref" href="#s26">[26]</a></p></article><article class="print-entry"><h3>L4 / 操作系统内核</h3><p><strong>像大楼管理员，分配房间和使用时间，并管理进入受保护区域的权限。</strong> 内核管理进程、线程、虚拟内存、权限与设备访问。应用通常运行在用户态，通过系统调用请求受保护的服务；Windows NT 与 macOS XNU 提供的环境和约定不同。要注意，普通加法、循环和许多函数调用由 CPU 直接执行，不会逐条经过内核。完整虚拟机可以运行另一套客体内核，而 API 兼容层通常是在宿主系统上实现应用需要的接口与行为。</p><p>Windows：Windows NT 内核为 Windows 进程提供调度、内存、对象与设备服务。<br>Mac：macOS 的 XNU 内核提供本系统的进程、内存和设备服务；macOS 不等同于 Linux。</p><p><strong>卡点：</strong>程序依赖另一套内核行为或系统服务；系统版本也可能移除旧执行环境，例如 macOS 的 32 位应用支持。<br><strong>补法：</strong>使用适配版本、兼容层或运行目标操作系统的虚拟机；容器共享内核，不能自动补成任意操作系统。 <a class="ref" href="#s6">[6]</a> <a class="ref" href="#s7">[7]</a> <a class="ref" href="#s8">[8]</a> <a class="ref" href="#s21">[21]</a> <a class="ref" href="#s25">[25]</a></p></article><article class="print-entry"><h3>L3 / 设备驱动</h3><p><strong>像熟悉某台机器的操作员，把上面的任务变成这台设备能执行的操作。</strong> 驱动连接操作系统与具体设备，负责命令提交、资源管理、中断等工作。GPU 驱动还与运行时、编译器共同把图形或计算任务送到 GPU。驱动不是只看设备名称：操作系统驱动模型、CPU 架构和硬件版本都要匹配。也不是所有驱动都运行在内核态；现代系统可同时使用用户态与内核态组件，因此不能把这张分层图理解为严格的一条调用流水线。</p><p>Windows：图形驱动需符合 Windows 的驱动模型；Windows on Arm 所需驱动须匹配 Arm64 架构。<br>Mac：Apple 平台通过其驱动与 Metal 软件栈使用受支持的 GPU；安装另一系统的驱动不能直接替代。</p><p><strong>卡点：</strong>设备缺少本系统驱动，或应用附带的驱动架构不匹配；普通应用的 CPU 转译通常不覆盖这类组件。<br><strong>补法：</strong>使用厂商支持的系统和驱动；虚拟机依靠相应虚拟设备驱动，仍受虚拟设备暴露的功能限制。 <a class="ref" href="#s1">[1]</a> <a class="ref" href="#s6">[6]</a> <a class="ref" href="#s10">[10]</a> <a class="ref" href="#s12">[12]</a></p></article><article class="print-entry"><h3>L2 / 指令集 ISA</h3><p><strong>像处理器认识的词典与语法，同样一串符号在另一种语言中可能完全没有意义。</strong> ISA 规定处理器可见的指令、寄存器和执行规则。x86-64 与 Arm64 使用不同编码，给前者编译的机器码不能交给后者直接照读；同一指令集家族也可能存在可选扩展差异。CPU 与 GPU 各有执行代码的体系，GPU 指令并不由 CPU 的 x86 或 Arm 标签决定。因此 CPU 二进制转译能解决一类指令差异，却不会自动把 NVIDIA GPU 代码转换成 Apple GPU 代码。</p><p>Windows：常见 Windows PC 使用 x86-64；Windows 也有 Arm64 版本，可通过系统模拟层运行许多 x86/x64 应用。<br>Mac：Intel Mac 使用 x86-64；Apple silicon 使用 Arm64，Rosetta 可转译受支持的 Intel Mac 应用。</p><p><strong>卡点：</strong>处理器不认识目标指令，或缺少程序要求的扩展；“同为 64 位”不足以证明机器码兼容。<br><strong>补法：</strong>为目标 ISA 重新编译，或使用 Rosetta、Windows 模拟层等适用的二进制转译；其支持范围各不相同。 <a class="ref" href="#s1">[1]</a> <a class="ref" href="#s6">[6]</a> <a class="ref" href="#s12">[12]</a> <a class="ref" href="#s23">[23]</a></p></article><article class="print-entry"><h3>L1 / 微架构与硬件</h3><p><strong>同一份施工要求，可以由不同布局、不同速度和不同规模的工厂实现。</strong> 微架构是处理器实现 ISA 的具体办法，包括流水线、执行单元、缓存等。更完整的硬件系统还包括 CPU、GPU、专用加速器、内存和互连。同一 ISA 可以由多种微架构实现，所以内部设计不同不必然导致程序不兼容。反过来，算力很强也不等于具备每一种功能；硬件能力、内存容量和带宽，决定已能正确执行的任务能否以足够速度和规模完成。</p><p>Windows：PC 可采用多种 CPU 与 GPU 组合；独立 GPU 常有自己的显存，具体能力取决于型号。<br>Mac：Apple silicon 把多个计算单元集成在芯片中，并让 CPU 与 GPU 等共享统一内存资源。</p><p><strong>卡点：</strong>缺少需要的硬件功能，或内存装不下、带宽不足；能启动、功能完整和运行流畅是不同判断。<br><strong>补法：</strong>选择合适硬件，减少模型、分辨率或工作规模，使用量化和受支持的替代路径；更换后端还需软件适配。 <a class="ref" href="#s12">[12]</a> <a class="ref" href="#s17">[17]</a> <a class="ref" href="#s18">[18]</a> <a class="ref" href="#s23">[23]</a></p></article><article class="print-entry"><h3>L0 / 数字电路</h3><p><strong>像用大量可控开关搭积木，逐步组成会保存状态、比较和计算的机器。</strong> 最底下是晶体管及其组成的数字电路：逻辑门、存储单元、加法器等共同完成状态保存与运算。我们用 0 和 1 描述这些状态，但它们的意义来自上一层规定的编码和规则，并不存在所有电脑都通用的“二进制语言”。软件兼容性通常在 ISA、ABI 和 API 等接口处讨论，因为这些边界把复杂的电路细节封装起来，让程序不用认识每一个晶体管。</p><p>Windows：运行 Windows 的处理器最终都由数字电路完成运算；操作系统名称不决定晶体管采用哪种逻辑语义。<br>Mac：Mac 同样依赖数字电路；采用共同的二进制表示，并不会使各平台的可执行程序自动互通。</p><p><strong>卡点：</strong>“都是 0 和 1”只说明表示方式相似，不能证明上层对这串位的指令、数据和接口解释相同。<br><strong>补法：</strong>定位第一个不匹配的接口，再选择编译、转译或适配方案；一般无需从电路层重新设计整台机器。 <a class="ref" href="#s23">[23]</a></p></article></div>
+<div class="note"><strong>这是一张“兼容性检查地图”，不是每条指令的流水线。</strong>编号是本文的教学划分，不是统一行业标准。ABI 是跨组件的约定；驱动可含用户态与内核态部分；GPU 也有自己的指令集。它们不能被硬理解成九个依次执行的盒子。</div>
+<div class="mini-concept"><article class="concept"><b>ISA</b><h4>机器听懂什么？</h4><p>指令集架构。例如 x86-64 与 Arm64 对机器指令的编码、寄存器和行为有不同约定。</p></article><article class="concept"><b>API</b><h4>能向软件请求什么？</h4><p>应用编程接口。例如开窗口、读文件、提交绘制。像服务菜单，名称、参数和行为都要对得上。</p></article><article class="concept"><b>ABI</b><h4>编译后的双方如何交接？</h4><p>应用二进制接口。例如参数放哪个寄存器、数据怎样排布。菜单相似，交接规矩也可能不同。<a class="ref" href="#s5">[5]</a></p></article></div>
+</section>
+<section class="chapter" id="execution">
+<div class="sectionhead"><div><span class="kicker">02 / THE ACTUAL JOURNEY</span><h2>双击程序后，真实发生了什么？</h2></div></div>
+<p class="intro">先把“开发者制造程序”和“用户运行程序”分开。不是你每次双击，系统都把整个软件从源码重新编译一遍。</p>
+<p class="flowlabel">A. 以 C / C++ 原生应用为例：开发者构建程序</p>
+<div class="flow" aria-label="源码经过针对目标平台的编译和链接，成为带有依赖的可执行文件"><div class="flowbox"><b>源代码</b><span>开发者写的逻辑与 API 调用</span></div><div class="flowarrow" aria-hidden="true">→</div><div class="flowbox accent"><b>编译器</b><span>面向目标 CPU、OS 与 ABI</span></div><div class="flowarrow" aria-hidden="true">→</div><div class="flowbox"><b>链接器</b><span>组合机器码，记录或并入依赖</span></div><div class="flowarrow" aria-hidden="true">→</div><div class="flowbox"><b>可执行文件</b><span>Windows 常用 PE；Mac 用 Mach-O</span></div></div>
+<p class="flowlabel">B. 用户启动程序：加载与执行</p>
+<div class="flow"><div class="flowbox"><b>系统加载器</b><span>识别格式，将代码和数据映射进内存</span></div><div class="flowarrow" aria-hidden="true">→</div><div class="flowbox"><b>动态链接器</b><span>找到需要的库，建立调用关系</span></div><div class="flowarrow" aria-hidden="true">→</div><div class="flowbox accent"><b>CPU 开始执行</b><span>从入口运行匹配的机器指令</span></div></div>
+<p class="small" style="color:var(--muted);margin-top:12px">加载与链接的工作会交织进行；上图省略签名校验等细节。PE、Mach-O 不只是后缀，而是可执行内容的组织方式。<a class="ref" href="#s3">[3]</a><a class="ref" href="#s4">[4]</a></p>
+<div class="split-run"><article class="lane"><span class="lane-tag">CPU / NORMAL WORK</span><h3>普通计算，CPU 直接执行</h3><div class="inlinechain">加减乘、条件判断、普通内存访问 → CPU</div><p>应用的机器码通常在“用户态”运行。操作系统负责调度和保护，但不会替每一次加法代算。要读文件、建网络连接等，才通常经库调用进入系统调用，由内核提供服务。</p></article><article class="lane"><span class="lane-tag">GPU / SUBMITTED WORK</span><h3>GPU 任务，需要另一条路径</h3><div class="inlinechain">CPU 准备任务 → API / 驱动 → GPU</div><p>CPU 组织资源并提交任务，GPU 执行自己的程序；任务往往异步进行，需要时再同步结果。<strong>GPU 不是 CPU 指令执行链里的“下一层”。</strong><a class="ref" href="#s10">[10]</a><a class="ref" href="#s12">[12]</a></p></article></div>
+<details><summary>那 Python、Java、JavaScript 为什么更容易跨平台？</summary><div class="details-body"><p>它们把一部分平台差异交给解释器、虚拟机或即时编译器（JIT）处理：同一份源代码或字节码，由各平台自己的运行时执行。运行时本身仍要适配操作系统和 CPU；JIT 可以在运行时生成机器码。</p><p>但“语言跨平台”不等于“所有依赖跨平台”。Python 包里可能带有 C/C++ 原生扩展、外部程序或 CUDA 算子；这些仍受文件格式、ABI、系统库和硬件后端限制。安装包下载成功，也不代表 GPU 路径可用。<a class="ref" href="#s22">[22]</a><a class="ref" href="#s16">[16]</a></p></div></details>
+<details><summary>都是 Arm64 或 x86-64，为什么还不够？</summary><div class="details-body"><p>CPU 架构与操作系统是两条独立坐标：Intel Mac 也用 x86-64；Windows 也有 Arm64 版。Windows Arm64 程序和 Apple 芯片 Mac 可能有相同的大类指令体系，却仍使用不同的文件格式、调用约定、系统 API 和依赖。<a class="ref" href="#s3">[3]</a><a class="ref" href="#s5">[5]</a><a class="ref" href="#s6">[6]</a></p><p>同一 ISA 内部还有版本与扩展差别。例如程序要求某条向量指令，而目标 CPU 或转译层没实现，仍会失败。反过来，芯片内部的流水线、缓存、晶体管布局不同，只要满足程序所需的约定，仍可兼容。不能用“RISC / CISC”直接断定谁一定更快。<a class="ref" href="#s23">[23]</a></p></div></details>
+</section>
+<section class="chapter" id="cases">
+<div class="sectionhead"><div><span class="kicker">03 / FIND THE MISMATCH</span><h2>换一个案例，看哪里对不上</h2></div></div>
+<p class="intro">下面以 <strong>Apple 芯片 Mac 上的 macOS</strong>为主要目标环境。每个案例都回答同样四件事：拿到什么、卡在哪里、补哪一层、还剩什么限制。</p>
+<div class="case-select" id="case-select" role="group" aria-label="选择兼容性案例"><button type="button" data-case="intel" aria-pressed="true" aria-controls="case-stage">Intel 版 Mac 应用</button><button type="button" data-case="windows" aria-pressed="false" aria-controls="case-stage">Windows x64 软件</button><button type="button" data-case="winarm" aria-pressed="false" aria-controls="case-stage">Windows Arm64 软件</button><button type="button" data-case="game" aria-pressed="false" aria-controls="case-stage">Windows 游戏</button><button type="button" data-case="cuda" aria-pressed="false" aria-controls="case-stage">CUDA / AI 项目</button><button type="button" data-case="runtime" aria-pressed="false" aria-controls="case-stage">Python / Docker</button></div>
+<div class="case-stage" id="case-stage" aria-live="polite" aria-atomic="true"><div class="case-top"><p class="case-meta">CASE 01 / SAME OS, DIFFERENT ISA</p><h3>Intel Mac 应用 → Apple 芯片 Mac</h3><p>拿到的是面向 macOS 的 x86-64 程序；目标机器使用 Arm64 CPU。系统大环境相同，CPU 指令不同。</p></div><div class="case-body"><div class="statusgrid"><div class="status bad"><strong>L2 · CPU 指令</strong>x86-64 → Arm64，需要处理</div><div class="status good"><strong>L6 / L4 · macOS</strong>仍是 macOS 服务环境</div><div class="status maybe"><strong>L5 / L7 · 依赖</strong>插件与动态代码仍须匹配</div></div><div class="case-route" aria-label="一种解决路径"><span>Intel Mac 应用</span><i aria-hidden="true">→</i><span class="bridge">Rosetta 转译 x86-64</span><i aria-hidden="true">→</i><span>macOS 运行环境</span><i aria-hidden="true">→</i><span>Apple 芯片 CPU</span></div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>Arm CPU 不能原样执行这份 x86-64 机器码。Rosetta 为受支持的 Intel 应用提供转译环境，使它继续在 macOS 上工作；开发者也可以发布 Arm64 原生版或包含双架构代码的 Universal 应用。</p></div><div><h4>怎样补上这条路径</h4><p>主要补 CPU 指令与相关执行规则。这里本来就有 macOS API，所以无需同时补出 Windows 系统。不是“Windows 软件经 Rosetta 自动变成 Mac 软件”。</p></div></div><p class="case-limit"><strong>还要留意：</strong>还要检查依赖、插件、指令特性与系统版本；Rosetta 不转译内核扩展。Universal 是一份交付里装有不同架构的代码，不是一份机器码到处通用。 <a class="ref" href="#s1">[1]</a><a class="ref" href="#s26">[26]</a></p></div></div><div class="print-extra case-print" id="case-print"><article class="print-entry"><div class="case-stage"><div class="case-top"><p class="case-meta">CASE 01 / SAME OS, DIFFERENT ISA</p><h3>Intel Mac 应用 → Apple 芯片 Mac</h3><p>拿到的是面向 macOS 的 x86-64 程序；目标机器使用 Arm64 CPU。系统大环境相同，CPU 指令不同。</p></div><div class="case-body"><div class="statusgrid"><div class="status bad"><strong>L2 · CPU 指令</strong>x86-64 → Arm64，需要处理</div><div class="status good"><strong>L6 / L4 · macOS</strong>仍是 macOS 服务环境</div><div class="status maybe"><strong>L5 / L7 · 依赖</strong>插件与动态代码仍须匹配</div></div><div class="case-route" aria-label="一种解决路径"><span>Intel Mac 应用</span><i aria-hidden="true">→</i><span class="bridge">Rosetta 转译 x86-64</span><i aria-hidden="true">→</i><span>macOS 运行环境</span><i aria-hidden="true">→</i><span>Apple 芯片 CPU</span></div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>Arm CPU 不能原样执行这份 x86-64 机器码。Rosetta 为受支持的 Intel 应用提供转译环境，使它继续在 macOS 上工作；开发者也可以发布 Arm64 原生版或包含双架构代码的 Universal 应用。</p></div><div><h4>怎样补上这条路径</h4><p>主要补 CPU 指令与相关执行规则。这里本来就有 macOS API，所以无需同时补出 Windows 系统。不是“Windows 软件经 Rosetta 自动变成 Mac 软件”。</p></div></div><p class="case-limit"><strong>还要留意：</strong>还要检查依赖、插件、指令特性与系统版本；Rosetta 不转译内核扩展。Universal 是一份交付里装有不同架构的代码，不是一份机器码到处通用。 <a class="ref" href="#s1">[1]</a><a class="ref" href="#s26">[26]</a></p></div></div></article><article class="print-entry"><div class="case-stage"><div class="case-top"><p class="case-meta">CASE 02 / TWO INDEPENDENT BARRIERS</p><h3>Windows x64 软件 → Apple 芯片 Mac</h3><p>这一回不仅换了 CPU，也从 Windows 换到了 macOS。通常同时存在指令和操作系统环境差异。</p></div><div class="case-body"><div class="statusgrid"><div class="status bad"><strong>L2 · CPU 指令</strong>x86-64 代码需要转译或重编译</div><div class="status bad"><strong>L5 / L6 · 二进制与 API</strong>PE、ABI、Win32 与依赖不匹配</div><div class="status maybe"><strong>L3 / L4 · 深层服务</strong>特殊驱动和系统集成另查</div></div><div class="case-route" aria-label="一种解决路径"><span>Windows x64 程序</span><i aria-hidden="true">→</i><span class="bridge">Windows 接口兼容实现</span><i aria-hidden="true">→</i><span class="bridge">另配 CPU 指令转译</span><i aria-hidden="true">→</i><span>macOS / Apple 芯片</span></div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>macOS 加载器和系统库不会因为 CPU 足够快就理解完整的 Windows PE 程序及其 Win32 依赖。即使换成 Intel Mac，让双方都使用 x86-64，这些 OS、ABI 和加载问题仍然存在。</p></div><div><h4>怎样补上这条路径</h4><p>一种办法是把 Windows 接口兼容层与 CPU 转译配合使用；另一种办法是运行 Windows 客体系统。开发者发布适配 macOS 的版本也能解决问题。具体工具需支持这份程序的依赖。</p></div></div><p class="case-limit"><strong>还要留意：</strong>图中的组合是概念路径，不是所有工具的内部顺序。虚拟机里的 Windows on Arm 常使用 Windows 自己的 x64 模拟；这和 macOS Rosetta 是不同环境。 <a class="ref" href="#s3">[3]</a><a class="ref" href="#s4">[4]</a><a class="ref" href="#s6">[6]</a><a class="ref" href="#s7">[7]</a></p></div></div></article><article class="print-entry"><div class="case-stage"><div class="case-top"><p class="case-meta">CASE 03 / SAME ISA IS NOT THE SAME PLATFORM</p><h3>双方都是 Arm64，仍不能直接互换</h3><p>这是最能说明“CPU 架构不等于操作系统”的对照：Windows Arm64 程序并不会因此成为 Apple 芯片 Mac 的原生应用。</p></div><div class="case-body"><div class="statusgrid"><div class="status good"><strong>L2 · CPU 大类</strong>同属 Arm64；仍需满足具体特性</div><div class="status bad"><strong>L5 · 格式与 ABI</strong>Windows PE / 调用规则不同</div><div class="status bad"><strong>L6 / L4 · 系统服务</strong>Windows API 不由 macOS 原生提供</div></div><div class="case-route" aria-label="一种解决路径"><span>Windows Arm64 程序</span><i aria-hidden="true">→</i><span class="bridge">需要合适的 Windows 环境</span><i aria-hidden="true">→</i><span>例如 Arm64 Windows 客体</span><i aria-hidden="true">→</i><span>Apple 芯片 CPU</span></div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>机器指令大类可以吻合，但程序还会找 Windows 的库、系统入口，并按 Windows 的二进制约定交接数据。Apple 平台的 Arm64 ABI 也有自己的细节。同样写着 Arm64，不代表完整平台契约一致。</p></div><div><h4>怎样补上这条路径</h4><p>需要针对该架构可用的系统兼容方案、运行合适的 Windows 客体，或移植到 macOS。仅仅下载“ARM 版”，不能绕过 Windows 与 macOS 的区别。</p></div></div><p class="case-limit"><strong>还要留意：</strong>普通硬件虚拟化能让同 ISA 的大量客体代码直接执行，但不会自动提供任何实体 GPU、外设和驱动的完整能力。 <a class="ref" href="#s3">[3]</a><a class="ref" href="#s5">[5]</a><a class="ref" href="#s6">[6]</a><a class="ref" href="#s8">[8]</a></p></div></div></article><article class="print-entry"><div class="case-stage"><div class="case-top"><p class="case-meta">CASE 04 / CPU PATH + GPU PATH</p><h3>游戏能启动，为什么还可能黑屏或进不了对局？</h3><p>Windows 游戏在通用软件的差异之外，还增加图形 API、着色器、GPU 功能及游戏服务等检查项。</p></div><div class="case-body"><div class="statusgrid"><div class="status bad"><strong>L2 / L5 / L6 · CPU 程序</strong>仍需处理 Windows 与指令差异</div><div class="status bad"><strong>L6 / L3 / L2 · GPU 路径</strong>Direct3D、驱动和 GPU 代码</div><div class="status maybe"><strong>L8 / L4 · 游戏服务</strong>启动器、反作弊、DRM 等</div></div><div class="case-route" aria-label="一种解决路径"><span>游戏 CPU 逻辑</span><i aria-hidden="true">→</i><span class="bridge">Windows 兼容 + 指令处理</span><i aria-hidden="true">→</i><span class="bridge">图形 API / 着色器适配</span><i aria-hidden="true">→</i><span>Metal / 驱动 / Apple GPU</span></div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>CPU 转译解决不了 Direct3D 调用和目标 GPU 代码。渲染路径即使打通，联网与反作弊仍可能有平台要求。某些情况还受内存、性能或发行商未维护 Mac 版本的影响。</p></div><div><h4>怎样补上这条路径</h4><p>原生移植要适配 macOS 与图形路径；兼容运行可能组合 Wine 类接口实现、CPU 转译和图形转换。Apple 的 Game Porting Toolkit 为开发者提供评估与移植工具。</p></div></div><p class="case-limit"><strong>还要留意：</strong>Mac GPU 性能强，不会自动补齐不存在的接口；转换环境中“能玩”也不等于发行商承诺官方支持。具体游戏和版本需要单独验证。 <a class="ref" href="#s9">[9]</a><a class="ref" href="#s10">[10]</a><a class="ref" href="#s11">[11]</a><a class="ref" href="#s20">[20]</a></p></div></div></article><article class="print-entry"><div class="case-stage"><div class="case-top"><p class="case-meta">CASE 05 / KEEP THE MODEL, CHANGE THE IMPLEMENTATION</p><h3>训练用过 CUDA 的模型，不等于只能在 CUDA 上推理</h3><p>先分清拿到的是模型权重，还是一个依赖 CUDA 的完整项目。它们的可移植性不同。</p></div><div class="case-body"><div class="statusgrid"><div class="status good"><strong>L8 · 模型数据</strong>结构与权重常可复用或转换</div><div class="status bad"><strong>L7 / L6 / L3 · CUDA 栈</strong>运行库、算子、驱动不匹配</div><div class="status maybe"><strong>L2 / L1 · 计算设备</strong>Apple GPU 可用另一套实现</div></div><div class="case-route" aria-label="一种解决路径"><span>模型结构 + 权重</span><i aria-hidden="true">→</i><span class="bridge">受支持的推理引擎</span><i aria-hidden="true">→</i><span class="bridge">Metal / MPS / MLX 或 CPU 路径</span><i aria-hidden="true">→</i><span>Apple GPU / CPU</span></div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>CUDA GPU 程序面向 NVIDIA 的软件与硬件栈，不能原样交给 Apple GPU。模型权重主要是张量数据；只要另一个引擎理解结构并实现所需运算，就可能计算同一模型。</p></div><div><h4>怎样补上这条路径</h4><p>选择支持该模型的本地引擎和 Apple 后端；项目若含自定义 CUDA 扩展，则需要替代算子、移植实现或合适的 CPU 路径。Ollama 是服务与管理入口，不是通用 CUDA 翻译器。</p></div></div><p class="case-limit"><strong>还要留意：</strong>格式转换不补算子，量化不补 API。推理成功不保证原训练脚本可运行，也不保证输出逐位相同或运行得足够快。 <a class="ref" href="#s12">[12]</a><a class="ref" href="#s14">[14]</a><a class="ref" href="#s15">[15]</a><a class="ref" href="#s16">[16]</a><a class="ref" href="#s19">[19]</a></p></div></div></article><article class="print-entry"><div class="case-stage"><div class="case-top"><p class="case-meta">CASE 06 / PORTABILITY STILL HAS A FOUNDATION</p><h3>“跨平台”通常是有人替你适配了下层</h3><p>Python 把许多差异交给运行时；容器封装依赖与环境。两者都不会消除所有底层要求。</p></div><div class="case-body"><div class="statusgrid"><div class="status good"><strong>L7 / L8 · 复用能力</strong>纯代码与依赖环境更易复用</div><div class="status maybe"><strong>L5 / L2 · 原生组件</strong>扩展库与镜像架构仍需匹配</div><div class="status bad"><strong>L4 / L3 · 缺失的环境</strong>仍需匹配的内核与设备支持</div></div><div class="case-route" aria-label="一种解决路径"><span>Python 包 / 容器镜像</span><i aria-hidden="true">→</i><span class="bridge">合适运行时 / Linux 客体</span><i aria-hidden="true">→</i><span class="bridge">匹配的原生库与 CPU 架构</span><i aria-hidden="true">→</i><span>所需系统与设备后端</span></div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>Python 的原生扩展本身是已编译代码，也可能依赖 CUDA。Linux 容器需要 Linux 内核；Docker Desktop 在 Mac 上提供 Linux 虚拟机，镜像里的 Arm64 与 amd64 程序仍有区别。</p></div><div><h4>怎样补上这条路径</h4><p>获取当前平台对应的包、镜像与依赖；跨架构执行需要受支持的模拟等机制。需要 Apple GPU 的 AI 软件，通常还应明确选择可用的本机后端或受支持的服务连接方式。</p></div></div><p class="case-limit"><strong>还要留意：</strong>Docker 镜像里装了 CUDA，并不等于容器获得了 NVIDIA GPU。把不匹配的依赖打包得更完整，仍不会让硬件接口自动兼容。 <a class="ref" href="#s21">[21]</a><a class="ref" href="#s22">[22]</a><a class="ref" href="#s12">[12]</a></p></div></div></article></div>
+<div class="note orange"><strong>故障没有固定出场顺序。</strong>有的程序第一步就因格式或依赖失败；有的能进入界面，却在调用特定 GPU 算子、插件或联网服务时失败。能启动，只验证了已走过的那部分路径。</div>
+</section>
+<section class="chapter" id="games">
+<div class="sectionhead"><div><span class="kicker">04 / TWO PROCESSORS, TWO PATHS</span><h2>游戏卡住的，往往是一整条图形链</h2></div></div>
+<p class="intro">一款游戏同时有 CPU 程序和 GPU 程序。CPU 处理输入、游戏逻辑并安排绘制；GPU 批量处理顶点、像素及其他计算。<strong>CPU 代码能跑，不等于 GPU 那条路也已经打通。</strong></p>
+<div class="gpu-diagram" role="img" aria-label="Windows 游戏在 Mac 上的一种兼容路径：游戏的 CPU 代码需解决指令和 Windows 接口差异；Direct3D 调用经过兼容转换映射到 Metal，经 macOS 驱动交给 Apple GPU。着色器有独立的转换编译路径。">
+<p class="flowlabel">一种兼容运行思路 · 具体组件与覆盖范围取决于工具</p>
+<div class="gpu-row"><div class="gpu-node">游戏 CPU 部分<small>指令转译 + Windows 接口</small></div><span class="linkline" aria-hidden="true">→</span><div class="gpu-node">Direct3D 请求<small>创建资源 / 提交绘制</small></div><span class="linkline" aria-hidden="true">→</span><div class="gpu-node bridge">图形接口转换<small>把支持的行为映射到 Metal</small></div><span class="linkline" aria-hidden="true">→</span><div class="gpu-node">Metal / 驱动<small>提交给 Apple GPU 执行</small></div></div>
+<div class="shader-lane"><b>并行的着色器编译线：</b>HLSL 源码 → DXIL 等中间格式 → 转换 / 编译 → 目标 GPU 程序<br>Apple 的 Metal Shader Converter 可将 DXIL 转成 Metal 库；转换着色器只是移植的一部分。<a class="ref" href="#s9" style="color:#d6e7bb">[9]</a></div>
+<p class="gpu-caption">Rosetta 负责的 CPU 指令转译，不会顺带完成 Direct3D → Metal，也不会把 NVIDIA GPU 指令变成 Apple GPU 指令。</p>
+</div>
+<div class="explain-grid">
+<article class="explain-item"><h3>① 图形 API：下单方式不同</h3><p>Direct3D 是 DirectX 的图形部分，Metal 是 Apple 的图形与计算接口，Vulkan 是另一套跨平台图形与计算规范。它们对资源、同步和绘制的约定不同。转换层需要把行为对应起来，有些特性没有直接等价物。<a class="ref" href="#s9">[9]</a><a class="ref" href="#s11">[11]</a></p></article>
+<article class="explain-item"><h3>② 着色器：GPU 也需要自己的程序</h3><p>Shader 不只是“给画面上色”，也可处理顶点或通用计算。HLSL、GLSL、MSL 是常见源码语言；DXIL、SPIR-V 是中间表示。它们通常仍需编译到目标 GPU，而不是所有显卡都直接执行同一份机器码。<a class="ref" href="#s9">[9]</a><a class="ref" href="#s11">[11]</a></p></article>
+<article class="explain-item"><h3>③ 驱动与硬件：能力必须真的存在</h3><p>驱动要同时懂操作系统、图形栈和具体 GPU。Windows 显卡驱动不能直接当 macOS 驱动使用。目标芯片及驱动还要满足游戏要求的特性；硬件缺失有时可用软件补，有时代价太大，或工具根本未实现。<a class="ref" href="#s10">[10]</a><a class="ref" href="#s11">[11]</a></p></article>
+<article class="explain-item"><h3>④ 系统服务与发行：画面出来也未必够</h3><p>启动器、数字版权管理（DRM）、反作弊和在线服务可能有单独要求，尤其涉及内核驱动时。也可能只是发行商尚未移植、测试与维护。应区分“能启动”“稳定可玩”和“官方支持”。反作弊并非一概不支持 Mac，需看产品和构建方式。<a class="ref" href="#s20">[20]</a></p></article>
+</div>
+<div class="native-compare"><h4>同一款游戏，两种路线</h4><p><strong>原生移植：</strong>开发者适配 macOS API、CPU 架构和 Metal 等受支持的图形路径，发布 Mac 版。<br><strong>兼容运行：</strong>保留更多原 Windows 程序，通过兼容层、CPU 转译及图形转换搭桥；支持范围与性能取决于整条链。</p></div>
+<details><summary>Game Porting Toolkit、MoltenVK 分别在做什么？</summary><div class="details-body"><p><strong>Game Porting Toolkit</strong> 是 Apple 面向开发者的游戏移植工具集，包含对未修改 Windows 游戏的评估环境、着色器转换和移植辅助。评估环境能运行部分游戏，有助于估计移植工作；这不代表所有 Windows 游戏都变成原生 Mac 游戏。<a class="ref" href="#s9">[9]</a></p><p><strong>MoltenVK</strong> 在 Metal 上实现 Vulkan 的可移植子集，并借助着色器转换处理 SPIR-V。它展示了 API 可以跨层实现，但不是 Apple GPU 原生执行 Vulkan，也不保证完整覆盖所有 Vulkan 特性。<a class="ref" href="#s11">[11]</a></p><p>工具有时串联多段转换；多一段可能增加工作，也可能因缓存和优化而让开销较小。不能把每一段都简单算成固定百分比的性能损失。</p></div></details>
+</section>
+<section class="chapter" id="ai">
+<div class="sectionhead"><div><span class="kicker">05 / SAME MODEL, DIFFERENT BACKENDS</span><h2>CUDA 不能直接跑，为何 Mac 仍能跑 AI？</h2></div></div>
+<p class="intro">关键是分清<strong>模型的数据</strong>和<strong>执行模型的代码</strong>。在 NVIDIA GPU 上训练出来的一组权重，不会因此变成只有 NVIDIA 才看得懂的机器指令。</p>
+<div class="model-diagram" role="img" aria-label="同一模型的结构、权重、分词器和配置，在引擎支持的前提下可走 CUDA 后端到 NVIDIA GPU、Metal 或 MPS 或 MLX 路径到 Apple GPU，或原生 CPU 后端。分支是替代实现，不是 CUDA 二进制自动转换。">
+<div class="model-top"><b>同一数学模型</b><span>结构 + 权重张量 + 分词器 / 配置</span></div><p class="branch-label">↓ 由理解该模型的框架 / 推理引擎，选择受支持的实现 ↓</p>
+<div class="model-paths"><article class="model-path"><span class="pathlabel">NVIDIA / GPU</span><b>CUDA 后端</b><p>CUDA 算子与计算库<br>CUDA 运行时 / NVIDIA 驱动</p><div class="down" aria-hidden="true">↓</div><div class="model-end">NVIDIA GPU</div></article><article class="model-path"><span class="pathlabel">APPLE / GPU</span><b>Metal 等实现路径</b><p>例如 llama.cpp Metal、<br>PyTorch MPS 或 MLX 的 GPU 路径</p><div class="down" aria-hidden="true">↓</div><div class="model-end">Metal 体系 → Apple GPU</div></article><article class="model-path"><span class="pathlabel">CPU / FALLBACK OR CHOICE</span><b>CPU 后端</b><p>面向 Arm64 / x86-64 的<br>原生代码与优化数学库</p><div class="down" aria-hidden="true">↓</div><div class="model-end">Apple / Intel / AMD CPU</div></article></div>
+<p class="model-foot">三条替代路线，不是 CUDA → Metal → CPU 的转换流水线。格式、结构与算子必须受各自引擎支持。<a class="ref" href="#s12">[12]</a><a class="ref" href="#s15">[15]</a><a class="ref" href="#s16">[16]</a><a class="ref" href="#s17">[17]</a></p>
+</div>
+<div class="two-cols"><article><h3>CUDA 为什么不能原封不动搬过来？</h3><p>CUDA 是一套计算平台：包含编程模型、API、计算库、运行时、驱动，以及面向 NVIDIA GPU 的代码。现代 Apple 芯片 Mac 没有这套 NVIDIA 官方 CUDA 加速栈。即便 CPU 侧 Python 能运行，GPU 那端仍不匹配。<a class="ref" href="#s12">[12]</a><a class="ref" href="#s13">[13]</a></p><p>CUDA 编译可生成 PTX，再由工具或驱动生成目标 NVIDIA GPU 的机器码。<strong>PTX 是 NVIDIA 的虚拟指令集，不是各厂商通用 GPU 语言。</strong>Rosetta 转译 CPU 代码，也不会替你补齐 CUDA GPU 栈。<a class="ref" href="#s12">[12]</a></p></article><article><h3>Ollama 等工具实际换了什么？</h3><p>Ollama 提供模型管理和推理服务入口，调用受支持的引擎与硬件后端；其官方文档说明 Apple GPU 可通过 Metal 加速。llama.cpp 则是有 CPU、Metal、CUDA 等后端的推理引擎。<a class="ref" href="#s14">[14]</a><a class="ref" href="#s15">[15]</a></p><p>它们让另一套算子实现完成模型需要的矩阵乘法、注意力等运算。像用不同厨房按配方做菜：<strong>数值配方可以复用，操作设备的代码要适配。</strong>这不是通用的 CUDA 二进制翻译。</p></article></div>
+<div class="code-panel"><div class="code-caption"><span>PYTORCH / 示意代码</span><span>后端相似，支持范围不同</span></div><pre><code><span class="comment"># NVIDIA GPU 路径，常见写法：</span>
+model = model.to("cuda")
+inputs = inputs.to("cuda")
+
+<span class="comment"># Apple GPU 路径：前提是模型、算子、类型均获支持</span>
+model = model.to("mps")
+inputs = inputs.to("mps")</code></pre><p class="code-foot">设备字符串能切换框架的调用方向，但不会自动改写自定义 CUDA 扩展；还需检查 MPS 是否可用、算子、数据类型和依赖。以上是两种环境的对照，不是一段应顺序执行的完整程序。<a class="ref" href="#s16" style="color:#d6e7bb">[16]</a></p></div>
+<div class="table-wrap"><table><caption class="sr-only">Mac 本地 AI 相关工具所在层及作用</caption><thead><tr><th>名称</th><th>主要处在哪一层</th><th>不要混淆的边界</th></tr></thead><tbody><tr><td>Ollama</td><td>模型管理 / 推理服务入口</td><td>调用支持的引擎与后端，不保证任何模型、任何 CUDA 项目都能运行。<a class="ref" href="#s14">[14]</a></td></tr><tr><td>llama.cpp</td><td>推理引擎 + 多种设备后端</td><td>支持的模型可走 Metal、CPU 等路径；不是任意 Python 训练项目的替代品。<a class="ref" href="#s15">[15]</a></td></tr><tr><td>PyTorch MPS</td><td>机器学习框架的 Apple GPU 后端</td><td>通过 MPS Graph、MPS 内核等使用 Metal 体系；MPS 不是 Neural Engine。<a class="ref" href="#s16">[16]</a></td></tr><tr><td>MLX</td><td>面向 Apple 芯片的数组 / ML 框架</td><td>支持 CPU 与 GPU、共享内存的数组计算；不等于 CUDA 兼容层。<a class="ref" href="#s17">[17]</a></td></tr><tr><td>Core ML</td><td>Apple 模型部署框架</td><td>可允许系统选择 CPU、GPU、Neural Engine；实际分配取决于模型和系统支持。<a class="ref" href="#s18">[18]</a></td></tr></tbody></table></div>
+<div class="three-metrics"><article class="metric"><span>QUESTION 01</span><h4>能运行吗？</h4><p>引擎是否支持模型结构、格式和所有必需算子？程序能否完成目标功能？</p></article><article class="metric"><span>QUESTION 02</span><h4>哪些计算用上 GPU？</h4><p>后端是否支持这个 GPU？是否有部分算子落在 CPU？使用 GPU 不等于全程都在 GPU。</p></article><article class="metric"><span>QUESTION 03</span><h4>实际有多快？</h4><p>看任务规模、带宽、内存、算子效率及同步开销。“模型放得下”和“生成得快”是两回事。</p></article></div>
+<details><summary>统一内存为什么有帮助，却不能解决 CUDA 不兼容？</summary><div class="details-body"><p>Apple 芯片的 CPU 和 GPU 可访问共享的物理内存池，框架能减少某些 CPU ↔ GPU 显式复制，方便协作。这改善的是<strong>数据放在哪里、怎样访问</strong>，不是让 CPU、Apple GPU 和 NVIDIA GPU 说同一种指令语言。<a class="ref" href="#s17">[17]</a></p><p>整机内存也不等于模型独占的显存。除权重外，还要留出上下文的 KV 缓存、临时工作空间和系统用量。量化可减少权重的存储与带宽需求，但可能影响结果精度，也不会让缺失的 CUDA API 自动出现。</p><p>统一内存更不代表自动使用 Neural Engine（神经网络专用加速器）。Metal、MPS 的常见路径在说 GPU；Core ML 提供允许系统使用 Neural Engine 的配置，选择所有设备也不是保证每个算子都会在那里运行。<a class="ref" href="#s16">[16]</a><a class="ref" href="#s18">[18]</a></p></div></details>
+<details><summary>把模型转成 GGUF，是不是就能跑任何模型？</summary><div class="details-body"><p>GGUF 是保存模型张量与元数据的文件格式。格式转换只解决“如何保存和读取”的一部分问题；引擎还要认识模型结构，实现需要的算子，并支持其量化方式。只有权重，没有合适的执行器，并不能推理。<a class="ref" href="#s19">[19]</a><a class="ref" href="#s15">[15]</a></p><p>模型包也可能包含自定义代码；这些代码不能像普通数值参数一样随意搬用。换后端后的计算精度、量化与实现可能不同，所以不保证输出逐位一致。</p></div></details>
+<details><summary>能推理，就能原样训练或微调吗？</summary><div class="details-body"><p>推理主要使用已有权重做前向计算；训练还需要梯度、反向算子、优化器状态，可能涉及分布式通信和专用 CUDA 库。推理引擎能读懂一个模型，并不等于原来的训练脚本也被移植了。训练或微调必须另外检查框架、算子、内存与依赖。</p><p>因此应分别问：“这个模型能否在本机推理？”和“这个训练项目能否在本机运行？”二者的依赖范围不同。</p></div></details>
+<details><summary>以前 Mac 支持过 CUDA 吗？未来转换是否绝无可能？</summary><div class="details-body"><p>部分配备兼容 NVIDIA GPU 的旧 Intel Mac 曾有官方 CUDA 环境。NVIDIA 的发行说明指出，CUDA 10.2 是最后支持 macOS 的官方 Toolkit / 驱动版本。“Mac 从来没有 CUDA”不准确。本文主要讨论现代 Apple 芯片 Mac。<a class="ref" href="#s13">[13]</a></p><p>从原理上可以尝试源代码移植、API 兼容或编译转换；难点是同时补齐算子、库、内存语义、驱动与硬件功能。不能从“两种 GPU 都会矩阵乘法”推导出任意 CUDA 程序可以直接互换。</p></div></details>
+</section>
+<section class="chapter" id="bridges">
+<div class="sectionhead"><div><span class="kicker">06 / BUILDING BRIDGES</span><h2>不同工具，补的是不同缺口</h2></div></div>
+<p class="intro">“转译”“兼容层”“虚拟机”经常一起出现，但它们做的事不同。真实产品可以把多种技术组合起来，所以不要只看工具名称，要看它接上了哪些接口。</p>
+<div class="table-wrap"><table><caption class="sr-only">兼容方案、解决层次及其限制</caption><thead><tr><th>方案</th><th>主要补哪里</th><th>没有自动补上的部分</th></tr></thead><tbody>
+<tr><td>原生移植 / 重新编译</td><td>从源码生成目标 OS、ISA、ABI 的版本；必要时改 API 与依赖。</td><td>第三方库、平台专用代码和 GPU 后端可能需要实际改写，不能保证一键重编译成功。<a class="ref" href="#s26">[26]</a></td></tr>
+<tr><td>CPU 二进制转译<br><span class="small">如 Rosetta</span></td><td>把一种 CPU 的机器指令转成另一种 CPU 能执行的代码。</td><td>不会自动提供 Windows API、图形接口、CUDA 栈或内核驱动。<a class="ref" href="#s1">[1]</a></td></tr>
+<tr><td>系统 API 兼容层<br><span class="small">如 Wine 类方案</span></td><td>在另一 OS 上实现应用预期的 Windows 接口及行为。</td><td>实现不一定覆盖全部功能；跨 ISA 还需额外处理指令执行，特殊驱动另有门槛。<a class="ref" href="#s7">[7]</a></td></tr>
+<tr><td>图形 / 计算后端适配</td><td>转换受支持的 API 或着色器；或为算法重新实现另一套后端。</td><td>API 转换与算子重写是不同办法，均不保证所有功能、精度和性能等价。<a class="ref" href="#s9">[9]</a><a class="ref" href="#s16">[16]</a></td></tr>
+<tr><td>硬件虚拟化的虚拟机</td><td>运行完整客体 OS；同 ISA 下大量客体代码可直接由宿主 CPU 执行。</td><td>虚拟化本身不把 x86 变成 Arm；虚拟 GPU、客体驱动与设备访问仍受限制。<a class="ref" href="#s8">[8]</a></td></tr>
+<tr><td>全系统模拟<br><span class="small">如 QEMU 的 TCG 路径</span></td><td>用软件模拟目标 CPU 与设备，可跨架构运行客体系统。</td><td>通常开销更大，且只能用模拟器实现的设备与功能。QEMU 也能使用硬件加速，不只有模拟模式。<a class="ref" href="#s8">[8]</a></td></tr>
+<tr><td>容器 / Docker</td><td>封装应用及依赖，利用相应内核隔离进程；Mac 上 Linux 容器通常在 Linux VM 内。</td><td>不会凭空提供任意 OS、CPU 架构或 NVIDIA GPU。镜像架构不匹配仍需模拟等机制。<a class="ref" href="#s21">[21]</a></td></tr>
+<tr><td>远程桌面 / 云端运行</td><td>把执行留在兼容的另一台机器，本机传输入、接收画面或结果。</td><td>没有让本机变兼容；只是改变执行地点，体验受网络、远程资源与服务条件影响。</td></tr>
+</tbody></table></div><p class="table-hint">小屏可左右滑动表格。“虚拟机”是一种运行环境，“模拟 / 硬件虚拟化”是实现方式，可以组合。</p>
+<details><summary>Apple 芯片上装 Windows 虚拟机，谁在翻译 x86 程序？</summary><div class="details-body"><p>一种常见路线是：<strong>x64 Windows 应用 → Windows 11 on Arm 自己的 x64 模拟 → Arm64 Windows 客体系统 → 虚拟化环境 → Apple 芯片 CPU</strong>。这里模拟 Windows 应用的是 Windows，不是 macOS 的 Rosetta。Windows 的 x86/x64 模拟主要面向用户态应用，驱动仍需要 Arm64 版本。<a class="ref" href="#s6">[6]</a></p><p>客体系统拿到的是虚拟机提供的设备视图。即使 Windows 应用能启动，也不意味着它能使用任意物理 GPU、所有 DirectX 特性，或获得 NVIDIA CUDA 设备。</p></div></details>
+<details><summary>Rosetta 的边界、旧插件和支持期限怎么看？</summary><div class="details-body"><p>在 macOS 应用场景下，Rosetta 以进程为单位处理 Intel 代码；同一进程不能任意混用 Arm64 与 x86-64 动态代码。因此主程序已有原生版，旧 Intel 插件仍可能要求主程序也在 Rosetta 下运行。内核扩展不在其转译范围。<a class="ref" href="#s1">[1]</a></p><p>还有一个专门场景：Apple 的 Virtualization 框架可在 Arm Linux 虚拟机中集成 Rosetta，用来运行 Intel Linux 用户态程序。这也不等于它提供了 Windows API。<a class="ref" href="#s24">[24]</a></p><p><strong>时效提示：</strong>截至 2026-09-13 核查，Apple 公布的计划是在 macOS 27 中继续提供 Rosetta；从 macOS 28 起，仅为部分不再维护且依赖 Intel 框架的旧游戏保留相应功能。这里引用的是支持计划，不推断未来系统发布日期；实际使用前应查看官方最新说明。<a class="ref" href="#s2">[2]</a></p></div></details>
+<details><summary>旧 32 位 Mac 应用不能跑，也全是 Arm 的问题吗？</summary><div class="details-body"><p>不是。macOS Catalina 10.15 起已不再支持 32 位 Mac 应用，这在 Intel Mac 上也成立。Rosetta 2 不会恢复已经移除的 32 位 macOS 应用环境。这里首先失去的是系统对旧应用的支持，不只是 CPU 品牌变了。<a class="ref" href="#s25">[25]</a></p></div></details>
+</section>
+<section class="chapter" id="check">
+<div class="sectionhead"><div><span class="kicker">07 / YOUR COMPATIBILITY CHECK</span><h2>以后遇到“不支持”，按这六问定位</h2></div></div>
+<p class="intro">不必先弄懂所有缩写。先找软件的系统要求与依赖清单，然后把问题放回相应层。</p>
+<div class="checklist"><article class="check"><div><h3>拿到的是代码，还是数据？</h3><p>源码、编译好的程序、插件，还是模型权重？同一个模型的数据可能可复用，现有执行代码却需要换后端。</p></div></article><article class="check"><div><h3>目标 OS 与 CPU 分别是什么？</h3><p>例如 macOS + Arm64，不要只看“64 位”。Windows Arm64、Windows x64、macOS Arm64 是不同目标。</p></div></article><article class="check"><div><h3>文件与依赖能被加载吗？</h3><p>PE / Mach-O、运行时、动态库、插件的版本与架构是否匹配？“缺 DLL”和“指令不支持”是不同问题。</p></div></article><article class="check"><div><h3>用的是哪套 GPU 后端？</h3><p>游戏查 Direct3D / Metal / Vulkan 与所需特性；AI 查 CUDA / MPS / Metal / CPU，以及自定义算子。</p></div></article><article class="check"><div><h3>有没有更深的系统要求？</h3><p>内核驱动、反作弊、DRM、设备访问和平台支持政策，可能让“能显示画面”的软件仍无法完成任务。</p></div></article><article class="check"><div><h3>功能、加速和体验分别达标吗？</h3><p>先验证完整功能，再确认实际使用了哪个设备，最后测速度和内存。不要用一次启动成功推断全部兼容。</p></div></article></div>
+<div class="final-callout">真正要问的是：<br>“这份程序依赖的哪条约定，目标环境没有满足？”<span>Rosetta 补指令，兼容层补接口，虚拟机提供客体系统，AI 后端换运算实现。找到层，才能选对办法。</span></div>
+</section>
+<section class="chapter" id="sources">
+<div class="sectionhead"><div><span class="kicker">08 / GLOSSARY & SOURCES</span><h2>术语不用背，随时回来查</h2></div></div>
+<div class="glossary"><details><summary>原生 / 转译 / 移植</summary><div class="details-body">原生通常指代码面向当前平台构建并执行，不需要另一种 CPU 指令集的转译。调用系统 API 或 GPU 驱动仍然是正常的原生路径。转译转换现有代码的执行表示；移植则调整源码、依赖与构建，使软件适配目标平台。</div></details><details><summary>框架 / 运行时 / 后端</summary><div class="details-body">框架提供组织应用与调用功能的结构；运行时是程序执行时依赖的支持环境；后端负责把抽象任务落实到某个设备或平台。三者可能包含彼此，没有唯一严格的产品边界。</div></details><details><summary>内核 / 系统调用 / 驱动</summary><div class="details-body">内核管理进程、内存、权限与设备资源；系统调用是应用请求内核服务的入口；驱动连接系统与具体设备，可有用户态和内核态组件。普通函数调用并不一定进入内核。</div></details><details><summary>CPU / GPU / Neural Engine</summary><div class="details-body">CPU 擅长通用控制与多类计算；GPU 擅长大规模并行工作；Neural Engine 是 Apple 的神经网络专用加速器。它们有不同的执行能力与软件路径，不能因为都在同一芯片上就直接互换程序。</div></details><details><summary>机器码 / 字节码 / 中间表示</summary><div class="details-body">机器码由特定处理器执行；字节码通常交给对应运行时解释或编译；中间表示用于编译转换。DXIL、SPIR-V、PTX 属于各自生态的表示或虚拟指令约定，并不因此自动跨所有设备通用。</div></details><details><summary>权重 / 算子 / 量化 / KV 缓存</summary><div class="details-body">权重是训练得到的数值参数；算子是矩阵乘法等基本计算；量化用更低精度表示数值以节省资源；KV 缓存存储生成式模型上下文计算中可复用的键和值。保存格式、算子支持和运行内存是不同检查项。</div></details></div>
+<p class="sources-intro"><strong>研究与来源说明：</strong>下列均为厂商或项目维护者的一手资料，核查日为 <strong>2026-09-13</strong>。分层编号、类比与框架图是对资料的教学归纳，不是任何厂商的官方分层标准。涉及工具支持范围的结论以所引版本与官方说明为准；本文不作为具体游戏或模型的可运行保证。</p>
+<div class="sources-list" id="source-list"><article class="source" id="s1"><span class="source-num">01</span><div><a href="https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment" target="_blank" rel="noopener noreferrer">Apple Developer · About the Rosetta translation environment ↗</a><p>Rosetta 的 CPU 转译范围、进程与插件约束，以及不支持的代码类型。</p></div></article><article class="source" id="s2"><span class="source-num">02</span><div><a href="https://support.apple.com/en-us/102527" target="_blank" rel="noopener noreferrer">Apple Support · Using Intel-based apps on a Mac with Apple silicon ↗</a><p>Intel App 的运行方式，以及 Apple 公布的 Rosetta 后续支持计划。</p></div></article><article class="source" id="s3"><span class="source-num">03</span><div><a href="https://learn.microsoft.com/en-us/windows/win32/debug/pe-format" target="_blank" rel="noopener noreferrer">Microsoft Learn · PE Format ↗</a><p>Windows PE 可执行文件的结构与目标机器类型；文件格式不等于 CPU 指令集。</p></div></article><article class="source" id="s4"><span class="source-num">04</span><div><a href="https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CodeFootprint/Articles/MachOOverview.html" target="_blank" rel="noopener noreferrer">Apple Developer Archive · Overview of the Mach-O Executable Format ↗</a><p>Mach-O 的基本组织方式。历史档案仅用于稳定的格式概念。</p></div></article><article class="source" id="s5"><span class="source-num">05</span><div><a href="https://developer.apple.com/documentation/xcode/writing-arm64-code-for-apple-platforms" target="_blank" rel="noopener noreferrer">Apple Developer · Writing ARM64 code for Apple platforms ↗</a><p>函数调用、栈与数据等 ABI 约定，以及 Apple 平台的 ARM64 ABI 差异。</p></div></article><article class="source" id="s6"><span class="source-num">06</span><div><a href="https://learn.microsoft.com/en-us/windows/arm/apps-on-arm-x86-emulation" target="_blank" rel="noopener noreferrer">Microsoft Learn · How emulation works on Arm ↗</a><p>Windows on Arm 的 x86／x64 用户态模拟；设备驱动仍需要适配 Arm64。</p></div></article><article class="source" id="s7"><span class="source-num">07</span><div><a href="https://www.winehq.org/about" target="_blank" rel="noopener noreferrer">WineHQ · About Wine ↗</a><p>Wine 的 Windows API 兼容层定位；不能由此推导所有程序均可运行。</p></div></article><article class="source" id="s8"><span class="source-num">08</span><div><a href="https://www.qemu.org/docs/master/system/introduction.html" target="_blank" rel="noopener noreferrer">QEMU · System Emulation: Introduction ↗</a><p>全系统模拟、虚拟设备、TCG 与 hypervisor 加速的区别及组合。</p></div></article><article class="source" id="s9"><span class="source-num">09</span><div><a href="https://developer.apple.com/games/game-porting-toolkit/" target="_blank" rel="noopener noreferrer">Apple Developer · Game Porting Toolkit ↗</a><p>Windows 游戏评估环境、系统接口移植，以及 DXIL 到 Metal 库的转换。</p></div></article><article class="source" id="s10"><span class="source-num">10</span><div><a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-and-later-display-driver-model-architecture" target="_blank" rel="noopener noreferrer">Microsoft Learn · WDDM Architecture ↗</a><p>Direct3D 运行时、用户态图形驱动与 Windows 内核图形组件的关系。</p></div></article><article class="source" id="s11"><span class="source-num">11</span><div><a href="https://github.com/KhronosGroup/MoltenVK" target="_blank" rel="noopener noreferrer">KhronosGroup · MoltenVK ↗</a><p>在 Metal 上实现 Vulkan 的可移植子集，并将 SPIR-V 着色器转换为 MSL。</p></div></article><article class="source" id="s12"><span class="source-num">12</span><div><a href="https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/cuda-platform.html" target="_blank" rel="noopener noreferrer">NVIDIA · The CUDA platform ↗</a><p>CUDA 运行时、驱动、PTX 虚拟指令集、GPU 二进制及条件兼容关系。</p></div></article><article class="source" id="s13"><span class="source-num">13</span><div><a href="https://docs.nvidia.com/cuda/archive/10.2/cuda-toolkit-release-notes/" target="_blank" rel="noopener noreferrer">NVIDIA · CUDA 10.2 Release Notes ↗</a><p>历史事实：CUDA 10.2 是最后官方支持 macOS 的 Toolkit 与驱动发行版。</p></div></article><article class="source" id="s14"><span class="source-num">14</span><div><a href="https://docs.ollama.com/gpu" target="_blank" rel="noopener noreferrer">Ollama · Hardware support ↗</a><p>Ollama 的硬件后端支持；Apple GPU 通过 Metal API 加速。</p></div></article><article class="source" id="s15"><span class="source-num">15</span><div><a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener noreferrer">ggml-org · llama.cpp ↗</a><p>同一推理引擎具有 CPU、CUDA、Metal 等后端，以及 Apple silicon 优化。</p></div></article><article class="source" id="s16"><span class="source-num">16</span><div><a href="https://docs.pytorch.org/docs/stable/notes/mps.html" target="_blank" rel="noopener noreferrer">PyTorch · MPS backend ↗</a><p>PyTorch 的 MPS GPU 后端如何映射计算图和算子到 Apple Metal 体系。</p></div></article><article class="source" id="s17"><span class="source-num">17</span><div><a href="https://ml-explore.github.io/mlx/build/html/usage/unified_memory.html" target="_blank" rel="noopener noreferrer">MLX · Unified Memory ↗</a><p>Apple silicon CPU 与 GPU 共享内存池，以及 MLX 按操作选择计算设备。</p></div></article><article class="source" id="s18"><span class="source-num">18</span><div><a href="https://developer.apple.com/documentation/coreml/mlcomputeunits" target="_blank" rel="noopener noreferrer">Apple Developer · MLComputeUnits ↗</a><p>Core ML 可允许使用 CPU、GPU 与 Neural Engine；允许使用不等于保证实际落点。</p></div></article><article class="source" id="s19"><span class="source-num">19</span><div><a href="https://github.com/ggml-org/ggml/blob/master/docs/gguf.md" target="_blank" rel="noopener noreferrer">ggml-org · GGUF specification ↗</a><p>模型文件中的张量与元数据；数据格式与执行模型的代码是不同事物。</p></div></article><article class="source" id="s20"><span class="source-num">20</span><div><a href="https://onlineservices.epicgames.com/news/epic-online-services-launches-anti-cheat-support-for-linux-mac-and-steam-deck" target="_blank" rel="noopener noreferrer">Epic Online Services · Anti-Cheat support for Linux, Mac, and Steam Deck ↗</a><p>2021 年公告区分 Mac 原生构建与 Linux Wine／Proton 支持，不保证任一游戏当前可用。</p></div></article><article class="source" id="s21"><span class="source-num">21</span><div><a href="https://docs.docker.com/desktop/features/vmm/" target="_blank" rel="noopener noreferrer">Docker Docs · Virtual Machine Manager ↗</a><p>Docker Desktop 借助 Linux 虚拟机运行 Linux 容器；虚拟化后端随平台而异。</p></div></article><article class="source" id="s22"><span class="source-num">22</span><div><a href="https://docs.python.org/3/extending/extending.html" target="_blank" rel="noopener noreferrer">Python · Extending Python with C or C++ ↗</a><p>Python 可调用需要编译、链接与动态加载的原生扩展，因此仍受平台依赖约束。</p></div></article><article class="source" id="s23"><span class="source-num">23</span><div><a href="https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/arm-fundamentals-introduction-to-understanding-arm-processors" target="_blank" rel="noopener noreferrer">Arm · Arm Fundamentals: Introduction to understanding Arm processors ↗</a><p>区分处理器实现、ISA 版本和指令扩展。早期资料仅用于架构基本概念。</p></div></article><article class="source" id="s24"><span class="source-num">24</span><div><a href="https://developer.apple.com/documentation/virtualization/running-intel-binaries-in-linux-vms" target="_blank" rel="noopener noreferrer">Apple Developer · Running Intel binaries in Linux VMs ↗</a><p>Rosetta 也可在受支持的 Arm Linux 虚拟机中转译 Intel Linux 用户态程序。</p></div></article><article class="source" id="s25"><span class="source-num">25</span><div><a href="https://support.apple.com/en-us/103076" target="_blank" rel="noopener noreferrer">Apple Support · 32-bit app compatibility with macOS ↗</a><p>macOS Catalina 起不再支持 32 位 App；这类中断也发生在 Intel Mac。</p></div></article><article class="source" id="s26"><span class="source-num">26</span><div><a href="https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary" target="_blank" rel="noopener noreferrer">Apple Developer · Building a universal macOS binary ↗</a><p>Universal binary 同时包含 arm64 与 x86_64 代码，由系统选择适合的版本。</p></div></article></div>
+</section>
+<footer class="footer"><span>计算机兼容性地图 · 原理、案例与解决思路</span><a href="#top">回到顶部 ↑</a></footer>
+<noscript><p class="noscript">此网页的分层探索与案例切换需要 JavaScript；其余正文、图解和来源可直接阅读。</p></noscript>
+</main></div>
+<script>const layers = [
+  {
+    id: 8,
+    title: '应用与数据',
+    english: 'Apps & Data',
+    analogy: '应用像做菜的厨师，数据像食材；带走食材，不等于带走整间厨房。',
+    explain: '这是读者最熟悉的一层：办公软件、游戏、聊天界面，以及文档、纹理、模型权重等内容。应用组织功能，数据提供要处理的材料；两者的可移植性不同。同一份模型权重可能被不同平台的推理引擎读取，但还要匹配模型结构、文件格式与算子支持。软件厂商是否发布、测试和维护对应版本，也决定了“理论上可实现”能否成为可靠产品。',
+    windows: 'Windows 版游戏包含程序、资源、插件，可能还依赖启动器与反作弊服务。',
+    mac: 'Mac 版应用可读取同类文档或模型数据，但通常需要自己的可执行程序和依赖。',
+    fault: '没有对应平台版本，或引擎不能解析数据格式、执行模型结构；插件与反作弊也可能成为独立障碍。',
+    fix: '获取厂商适配版本；使用支持该格式和模型的应用，必要时转换数据，并核对插件及服务支持。',
+    source: '<a class="ref" href="#s19">[19]</a> <a class="ref" href="#s20">[20]</a> <a class="ref" href="#s26">[26]</a>'
+  },
+  {
+    id: 7,
+    title: '框架与运行时',
+    english: 'Frameworks & Runtimes',
+    analogy: '像连锁店统一的工作手册，由各地团队用当地设备完成同一项任务。',
+    explain: '框架和运行时替应用处理常见工作，例如解释 Python、执行游戏逻辑，或把矩阵运算交给加速器。它们把部分平台差异藏在统一接口后面，因此一份上层代码可以在多种电脑上使用。但运行时本身仍须适配操作系统与 CPU；它加载的原生扩展也有架构限制。AI 框架更需要具体计算后端：切换到 Metal 或 MPS，意味着使用另一套已实现的执行路径。',
+    windows: 'Python、游戏引擎或 AI 框架运行于 Windows；GPU 后端可按框架支持选择 CUDA 等。',
+    mac: 'Python、原生推理引擎或 AI 框架运行于 macOS；可通过 Metal、MPS、MLX 等路径计算。',
+    fault: '缺少平台版本的原生扩展，或计算后端缺算子、数据类型、自定义内核；改一个设备名称未必能运行。',
+    fix: '安装匹配系统与架构的运行时和依赖；选择受支持的后端，替换专用算子，并按需使用 CPU 回退。',
+    source: '<a class="ref" href="#s14">[14]</a> <a class="ref" href="#s15">[15]</a> <a class="ref" href="#s16">[16]</a> <a class="ref" href="#s17">[17]</a> <a class="ref" href="#s22">[22]</a>'
+  },
+  {
+    id: 6,
+    title: '平台 API 与库',
+    english: 'APIs & Libraries',
+    analogy: '像服务窗口的菜单：你提出的请求，必须有人理解并提供对应服务。',
+    explain: 'API 是程序调用功能的约定，库则提供许多功能的具体实现。创建窗口、播放声音、绘制画面和提交 GPU 运算，都可能使用平台接口。Windows 与 macOS 的服务名称、参数和行为并不完全相同，因此 CPU 即使认识程序的指令，也不代表能完成它请求的服务。API 不等于系统调用：很多工作在用户态库里完成，只有需要内核服务的部分才跨入内核。',
+    windows: 'Win32 提供桌面系统接口；Direct3D 用于图形；CUDA 提供 NVIDIA GPU 计算相关接口与库。',
+    mac: 'AppKit 等提供桌面接口；Metal 提供图形与计算接口，配合 MPS 等库执行相应任务。',
+    fault: '应用请求的接口或语义不存在；Direct3D、Metal、CUDA 也不能仅凭名称相近就互换。',
+    fix: '开发者移植接口，或使用 Wine、图形转换层等实现适配；覆盖范围、性能和功能需要分别验证。',
+    source: '<a class="ref" href="#s7">[7]</a> <a class="ref" href="#s9">[9]</a> <a class="ref" href="#s11">[11]</a> <a class="ref" href="#s12">[12]</a>'
+  },
+  {
+    id: 5,
+    title: '二进制格式与 ABI',
+    english: 'Binary Format & ABI',
+    analogy: '既要认得包裹的包装清单，也要约定收件人怎样接过里面的东西。',
+    explain: '可执行文件除了机器指令，还记录代码、数据、依赖与加载信息；PE、Mach-O、ELF 是不同组织方式。ABI 是编译后组件互相配合的契约，例如参数放哪些寄存器、数据如何排列、栈和异常怎样处理。这里将它们单列为检查项，但 ABI 实际跨越多个层次，并不是运行时必须穿过的一块独立软件。文件格式和 CPU 架构相同，也不代表整套契约兼容。',
+    windows: 'Windows 可执行文件和 DLL 常用 PE；Windows 的调用约定与系统依赖构成目标平台的一部分。',
+    mac: 'macOS 原生可执行代码使用 Mach-O；Universal 应用可以包含分别面向 Intel 和 Apple silicon 的代码。',
+    fault: '加载器不认识文件，依赖库无法加载，或调用方与被调用方按不同规则传递参数和数据。',
+    fix: '针对目标平台重新构建程序与依赖，或使用理解源平台格式和执行规则的兼容环境；改后缀没有作用。',
+    source: '<a class="ref" href="#s3">[3]</a> <a class="ref" href="#s4">[4]</a> <a class="ref" href="#s5">[5]</a> <a class="ref" href="#s26">[26]</a>'
+  },
+  {
+    id: 4,
+    title: '操作系统内核',
+    english: 'OS Kernel',
+    analogy: '像大楼管理员，分配房间和使用时间，并管理进入受保护区域的权限。',
+    explain: '内核管理进程、线程、虚拟内存、权限与设备访问。应用通常运行在用户态，通过系统调用请求受保护的服务；Windows NT 与 macOS XNU 提供的环境和约定不同。要注意，普通加法、循环和许多函数调用由 CPU 直接执行，不会逐条经过内核。完整虚拟机可以运行另一套客体内核，而 API 兼容层通常是在宿主系统上实现应用需要的接口与行为。',
+    windows: 'Windows NT 内核为 Windows 进程提供调度、内存、对象与设备服务。',
+    mac: 'macOS 的 XNU 内核提供本系统的进程、内存和设备服务；macOS 不等同于 Linux。',
+    fault: '程序依赖另一套内核行为或系统服务；系统版本也可能移除旧执行环境，例如 macOS 的 32 位应用支持。',
+    fix: '使用适配版本、兼容层或运行目标操作系统的虚拟机；容器共享内核，不能自动补成任意操作系统。',
+    source: '<a class="ref" href="#s6">[6]</a> <a class="ref" href="#s7">[7]</a> <a class="ref" href="#s8">[8]</a> <a class="ref" href="#s21">[21]</a> <a class="ref" href="#s25">[25]</a>'
+  },
+  {
+    id: 3,
+    title: '设备驱动',
+    english: 'Device Drivers',
+    analogy: '像熟悉某台机器的操作员，把上面的任务变成这台设备能执行的操作。',
+    explain: '驱动连接操作系统与具体设备，负责命令提交、资源管理、中断等工作。GPU 驱动还与运行时、编译器共同把图形或计算任务送到 GPU。驱动不是只看设备名称：操作系统驱动模型、CPU 架构和硬件版本都要匹配。也不是所有驱动都运行在内核态；现代系统可同时使用用户态与内核态组件，因此不能把这张分层图理解为严格的一条调用流水线。',
+    windows: '图形驱动需符合 Windows 的驱动模型；Windows on Arm 所需驱动须匹配 Arm64 架构。',
+    mac: 'Apple 平台通过其驱动与 Metal 软件栈使用受支持的 GPU；安装另一系统的驱动不能直接替代。',
+    fault: '设备缺少本系统驱动，或应用附带的驱动架构不匹配；普通应用的 CPU 转译通常不覆盖这类组件。',
+    fix: '使用厂商支持的系统和驱动；虚拟机依靠相应虚拟设备驱动，仍受虚拟设备暴露的功能限制。',
+    source: '<a class="ref" href="#s1">[1]</a> <a class="ref" href="#s6">[6]</a> <a class="ref" href="#s10">[10]</a> <a class="ref" href="#s12">[12]</a>'
+  },
+  {
+    id: 2,
+    title: '指令集 ISA',
+    english: 'Instruction Set',
+    analogy: '像处理器认识的词典与语法，同样一串符号在另一种语言中可能完全没有意义。',
+    explain: 'ISA 规定处理器可见的指令、寄存器和执行规则。x86-64 与 Arm64 使用不同编码，给前者编译的机器码不能交给后者直接照读；同一指令集家族也可能存在可选扩展差异。CPU 与 GPU 各有执行代码的体系，GPU 指令并不由 CPU 的 x86 或 Arm 标签决定。因此 CPU 二进制转译能解决一类指令差异，却不会自动把 NVIDIA GPU 代码转换成 Apple GPU 代码。',
+    windows: '常见 Windows PC 使用 x86-64；Windows 也有 Arm64 版本，可通过系统模拟层运行许多 x86/x64 应用。',
+    mac: 'Intel Mac 使用 x86-64；Apple silicon 使用 Arm64，Rosetta 可转译受支持的 Intel Mac 应用。',
+    fault: '处理器不认识目标指令，或缺少程序要求的扩展；“同为 64 位”不足以证明机器码兼容。',
+    fix: '为目标 ISA 重新编译，或使用 Rosetta、Windows 模拟层等适用的二进制转译；其支持范围各不相同。',
+    source: '<a class="ref" href="#s1">[1]</a> <a class="ref" href="#s6">[6]</a> <a class="ref" href="#s12">[12]</a> <a class="ref" href="#s23">[23]</a>'
+  },
+  {
+    id: 1,
+    title: '微架构与硬件',
+    english: 'Microarchitecture',
+    analogy: '同一份施工要求，可以由不同布局、不同速度和不同规模的工厂实现。',
+    explain: '微架构是处理器实现 ISA 的具体办法，包括流水线、执行单元、缓存等。更完整的硬件系统还包括 CPU、GPU、专用加速器、内存和互连。同一 ISA 可以由多种微架构实现，所以内部设计不同不必然导致程序不兼容。反过来，算力很强也不等于具备每一种功能；硬件能力、内存容量和带宽，决定已能正确执行的任务能否以足够速度和规模完成。',
+    windows: 'PC 可采用多种 CPU 与 GPU 组合；独立 GPU 常有自己的显存，具体能力取决于型号。',
+    mac: 'Apple silicon 把多个计算单元集成在芯片中，并让 CPU 与 GPU 等共享统一内存资源。',
+    fault: '缺少需要的硬件功能，或内存装不下、带宽不足；能启动、功能完整和运行流畅是不同判断。',
+    fix: '选择合适硬件，减少模型、分辨率或工作规模，使用量化和受支持的替代路径；更换后端还需软件适配。',
+    source: '<a class="ref" href="#s12">[12]</a> <a class="ref" href="#s17">[17]</a> <a class="ref" href="#s18">[18]</a> <a class="ref" href="#s23">[23]</a>'
+  },
+  {
+    id: 0,
+    title: '数字电路',
+    english: 'Digital Logic',
+    analogy: '像用大量可控开关搭积木，逐步组成会保存状态、比较和计算的机器。',
+    explain: '最底下是晶体管及其组成的数字电路：逻辑门、存储单元、加法器等共同完成状态保存与运算。我们用 0 和 1 描述这些状态，但它们的意义来自上一层规定的编码和规则，并不存在所有电脑都通用的“二进制语言”。软件兼容性通常在 ISA、ABI 和 API 等接口处讨论，因为这些边界把复杂的电路细节封装起来，让程序不用认识每一个晶体管。',
+    windows: '运行 Windows 的处理器最终都由数字电路完成运算；操作系统名称不决定晶体管采用哪种逻辑语义。',
+    mac: 'Mac 同样依赖数字电路；采用共同的二进制表示，并不会使各平台的可执行程序自动互通。',
+    fault: '“都是 0 和 1”只说明表示方式相似，不能证明上层对这串位的指令、数据和接口解释相同。',
+    fix: '定位第一个不匹配的接口，再选择编译、转译或适配方案；一般无需从电路层重新设计整台机器。',
+    source: '<a class="ref" href="#s23">[23]</a>'
+  }
+];
+
+const cases = [
+{id:'intel',label:'Intel 版 Mac 应用',tag:'CASE 01 / SAME OS, DIFFERENT ISA',title:'Intel Mac 应用 → Apple 芯片 Mac',intro:'拿到的是面向 macOS 的 x86-64 程序；目标机器使用 Arm64 CPU。系统大环境相同，CPU 指令不同。',status:[['bad','L2 · CPU 指令','x86-64 → Arm64，需要处理'],['good','L6 / L4 · macOS','仍是 macOS 服务环境'],['maybe','L5 / L7 · 依赖','插件与动态代码仍须匹配']],route:['Intel Mac 应用','~Rosetta 转译 x86-64','macOS 运行环境','Apple 芯片 CPU'],why:'Arm CPU 不能原样执行这份 x86-64 机器码。Rosetta 为受支持的 Intel 应用提供转译环境，使它继续在 macOS 上工作；开发者也可以发布 Arm64 原生版或包含双架构代码的 Universal 应用。',fix:'主要补 CPU 指令与相关执行规则。这里本来就有 macOS API，所以无需同时补出 Windows 系统。不是“Windows 软件经 Rosetta 自动变成 Mac 软件”。',limit:'还要检查依赖、插件、指令特性与系统版本；Rosetta 不转译内核扩展。Universal 是一份交付里装有不同架构的代码，不是一份机器码到处通用。',sources:[1,26]},
+{id:'windows',label:'Windows x64 软件',tag:'CASE 02 / TWO INDEPENDENT BARRIERS',title:'Windows x64 软件 → Apple 芯片 Mac',intro:'这一回不仅换了 CPU，也从 Windows 换到了 macOS。通常同时存在指令和操作系统环境差异。',status:[['bad','L2 · CPU 指令','x86-64 代码需要转译或重编译'],['bad','L5 / L6 · 二进制与 API','PE、ABI、Win32 与依赖不匹配'],['maybe','L3 / L4 · 深层服务','特殊驱动和系统集成另查']],route:['Windows x64 程序','~Windows 接口兼容实现','~另配 CPU 指令转译','macOS / Apple 芯片'],why:'macOS 加载器和系统库不会因为 CPU 足够快就理解完整的 Windows PE 程序及其 Win32 依赖。即使换成 Intel Mac，让双方都使用 x86-64，这些 OS、ABI 和加载问题仍然存在。',fix:'一种办法是把 Windows 接口兼容层与 CPU 转译配合使用；另一种办法是运行 Windows 客体系统。开发者发布适配 macOS 的版本也能解决问题。具体工具需支持这份程序的依赖。',limit:'图中的组合是概念路径，不是所有工具的内部顺序。虚拟机里的 Windows on Arm 常使用 Windows 自己的 x64 模拟；这和 macOS Rosetta 是不同环境。',sources:[3,4,6,7]},
+{id:'winarm',label:'Windows Arm64 软件',tag:'CASE 03 / SAME ISA IS NOT THE SAME PLATFORM',title:'双方都是 Arm64，仍不能直接互换',intro:'这是最能说明“CPU 架构不等于操作系统”的对照：Windows Arm64 程序并不会因此成为 Apple 芯片 Mac 的原生应用。',status:[['good','L2 · CPU 大类','同属 Arm64；仍需满足具体特性'],['bad','L5 · 格式与 ABI','Windows PE / 调用规则不同'],['bad','L6 / L4 · 系统服务','Windows API 不由 macOS 原生提供']],route:['Windows Arm64 程序','~需要合适的 Windows 环境','例如 Arm64 Windows 客体','Apple 芯片 CPU'],why:'机器指令大类可以吻合，但程序还会找 Windows 的库、系统入口，并按 Windows 的二进制约定交接数据。Apple 平台的 Arm64 ABI 也有自己的细节。同样写着 Arm64，不代表完整平台契约一致。',fix:'需要针对该架构可用的系统兼容方案、运行合适的 Windows 客体，或移植到 macOS。仅仅下载“ARM 版”，不能绕过 Windows 与 macOS 的区别。',limit:'普通硬件虚拟化能让同 ISA 的大量客体代码直接执行，但不会自动提供任何实体 GPU、外设和驱动的完整能力。',sources:[3,5,6,8]},
+{id:'game',label:'Windows 游戏',tag:'CASE 04 / CPU PATH + GPU PATH',title:'游戏能启动，为什么还可能黑屏或进不了对局？',intro:'Windows 游戏在通用软件的差异之外，还增加图形 API、着色器、GPU 功能及游戏服务等检查项。',status:[['bad','L2 / L5 / L6 · CPU 程序','仍需处理 Windows 与指令差异'],['bad','L6 / L3 / L2 · GPU 路径','Direct3D、驱动和 GPU 代码'],['maybe','L8 / L4 · 游戏服务','启动器、反作弊、DRM 等']],route:['游戏 CPU 逻辑','~Windows 兼容 + 指令处理','~图形 API / 着色器适配','Metal / 驱动 / Apple GPU'],why:'CPU 转译解决不了 Direct3D 调用和目标 GPU 代码。渲染路径即使打通，联网与反作弊仍可能有平台要求。某些情况还受内存、性能或发行商未维护 Mac 版本的影响。',fix:'原生移植要适配 macOS 与图形路径；兼容运行可能组合 Wine 类接口实现、CPU 转译和图形转换。Apple 的 Game Porting Toolkit 为开发者提供评估与移植工具。',limit:'Mac GPU 性能强，不会自动补齐不存在的接口；转换环境中“能玩”也不等于发行商承诺官方支持。具体游戏和版本需要单独验证。',sources:[9,10,11,20]},
+{id:'cuda',label:'CUDA / AI 项目',tag:'CASE 05 / KEEP THE MODEL, CHANGE THE IMPLEMENTATION',title:'训练用过 CUDA 的模型，不等于只能在 CUDA 上推理',intro:'先分清拿到的是模型权重，还是一个依赖 CUDA 的完整项目。它们的可移植性不同。',status:[['good','L8 · 模型数据','结构与权重常可复用或转换'],['bad','L7 / L6 / L3 · CUDA 栈','运行库、算子、驱动不匹配'],['maybe','L2 / L1 · 计算设备','Apple GPU 可用另一套实现']],route:['模型结构 + 权重','~受支持的推理引擎','~Metal / MPS / MLX 或 CPU 路径','Apple GPU / CPU'],why:'CUDA GPU 程序面向 NVIDIA 的软件与硬件栈，不能原样交给 Apple GPU。模型权重主要是张量数据；只要另一个引擎理解结构并实现所需运算，就可能计算同一模型。',fix:'选择支持该模型的本地引擎和 Apple 后端；项目若含自定义 CUDA 扩展，则需要替代算子、移植实现或合适的 CPU 路径。Ollama 是服务与管理入口，不是通用 CUDA 翻译器。',limit:'格式转换不补算子，量化不补 API。推理成功不保证原训练脚本可运行，也不保证输出逐位相同或运行得足够快。',sources:[12,14,15,16,19]},
+{id:'runtime',label:'Python / Docker',tag:'CASE 06 / PORTABILITY STILL HAS A FOUNDATION',title:'“跨平台”通常是有人替你适配了下层',intro:'Python 把许多差异交给运行时；容器封装依赖与环境。两者都不会消除所有底层要求。',status:[['good','L7 / L8 · 复用能力','纯代码与依赖环境更易复用'],['maybe','L5 / L2 · 原生组件','扩展库与镜像架构仍需匹配'],['bad','L4 / L3 · 缺失的环境','仍需匹配的内核与设备支持']],route:['Python 包 / 容器镜像','~合适运行时 / Linux 客体','~匹配的原生库与 CPU 架构','所需系统与设备后端'],why:'Python 的原生扩展本身是已编译代码，也可能依赖 CUDA。Linux 容器需要 Linux 内核；Docker Desktop 在 Mac 上提供 Linux 虚拟机，镜像里的 Arm64 与 amd64 程序仍有区别。',fix:'获取当前平台对应的包、镜像与依赖；跨架构执行需要受支持的模拟等机制。需要 Apple GPU 的 AI 软件，通常还应明确选择可用的本机后端或受支持的服务连接方式。',limit:'Docker 镜像里装了 CUDA，并不等于容器获得了 NVIDIA GPU。把不匹配的依赖打包得更完整，仍不会让硬件接口自动兼容。',sources:[21,22,12]}
+];
+
+// 一手来源核验日期：2026-09-13。产品支持范围和未来计划以链接中的最新说明为准。
+const sources = [
+  {
+    "id": 1,
+    "org": "Apple Developer",
+    "title": "About the Rosetta translation environment",
+    "url": "https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment",
+    "note": "Rosetta 的 CPU 转译范围、进程与插件约束，以及不支持的代码类型。"
+  },
+  {
+    "id": 2,
+    "org": "Apple Support",
+    "title": "Using Intel-based apps on a Mac with Apple silicon",
+    "url": "https://support.apple.com/en-us/102527",
+    "note": "Intel App 的运行方式，以及 Apple 公布的 Rosetta 后续支持计划。"
+  },
+  {
+    "id": 3,
+    "org": "Microsoft Learn",
+    "title": "PE Format",
+    "url": "https://learn.microsoft.com/en-us/windows/win32/debug/pe-format",
+    "note": "Windows PE 可执行文件的结构与目标机器类型；文件格式不等于 CPU 指令集。"
+  },
+  {
+    "id": 4,
+    "org": "Apple Developer Archive",
+    "title": "Overview of the Mach-O Executable Format",
+    "url": "https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CodeFootprint/Articles/MachOOverview.html",
+    "note": "Mach-O 的基本组织方式。历史档案仅用于稳定的格式概念。"
+  },
+  {
+    "id": 5,
+    "org": "Apple Developer",
+    "title": "Writing ARM64 code for Apple platforms",
+    "url": "https://developer.apple.com/documentation/xcode/writing-arm64-code-for-apple-platforms",
+    "note": "函数调用、栈与数据等 ABI 约定，以及 Apple 平台的 ARM64 ABI 差异。"
+  },
+  {
+    "id": 6,
+    "org": "Microsoft Learn",
+    "title": "How emulation works on Arm",
+    "url": "https://learn.microsoft.com/en-us/windows/arm/apps-on-arm-x86-emulation",
+    "note": "Windows on Arm 的 x86／x64 用户态模拟；设备驱动仍需要适配 Arm64。"
+  },
+  {
+    "id": 7,
+    "org": "WineHQ",
+    "title": "About Wine",
+    "url": "https://www.winehq.org/about",
+    "note": "Wine 的 Windows API 兼容层定位；不能由此推导所有程序均可运行。"
+  },
+  {
+    "id": 8,
+    "org": "QEMU",
+    "title": "System Emulation: Introduction",
+    "url": "https://www.qemu.org/docs/master/system/introduction.html",
+    "note": "全系统模拟、虚拟设备、TCG 与 hypervisor 加速的区别及组合。"
+  },
+  {
+    "id": 9,
+    "org": "Apple Developer",
+    "title": "Game Porting Toolkit",
+    "url": "https://developer.apple.com/games/game-porting-toolkit/",
+    "note": "Windows 游戏评估环境、系统接口移植，以及 DXIL 到 Metal 库的转换。"
+  },
+  {
+    "id": 10,
+    "org": "Microsoft Learn",
+    "title": "WDDM Architecture",
+    "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-and-later-display-driver-model-architecture",
+    "note": "Direct3D 运行时、用户态图形驱动与 Windows 内核图形组件的关系。"
+  },
+  {
+    "id": 11,
+    "org": "KhronosGroup",
+    "title": "MoltenVK",
+    "url": "https://github.com/KhronosGroup/MoltenVK",
+    "note": "在 Metal 上实现 Vulkan 的可移植子集，并将 SPIR-V 着色器转换为 MSL。"
+  },
+  {
+    "id": 12,
+    "org": "NVIDIA",
+    "title": "The CUDA platform",
+    "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/cuda-platform.html",
+    "note": "CUDA 运行时、驱动、PTX 虚拟指令集、GPU 二进制及条件兼容关系。"
+  },
+  {
+    "id": 13,
+    "org": "NVIDIA",
+    "title": "CUDA 10.2 Release Notes",
+    "url": "https://docs.nvidia.com/cuda/archive/10.2/cuda-toolkit-release-notes/",
+    "note": "历史事实：CUDA 10.2 是最后官方支持 macOS 的 Toolkit 与驱动发行版。"
+  },
+  {
+    "id": 14,
+    "org": "Ollama",
+    "title": "Hardware support",
+    "url": "https://docs.ollama.com/gpu",
+    "note": "Ollama 的硬件后端支持；Apple GPU 通过 Metal API 加速。"
+  },
+  {
+    "id": 15,
+    "org": "ggml-org",
+    "title": "llama.cpp",
+    "url": "https://github.com/ggml-org/llama.cpp",
+    "note": "同一推理引擎具有 CPU、CUDA、Metal 等后端，以及 Apple silicon 优化。"
+  },
+  {
+    "id": 16,
+    "org": "PyTorch",
+    "title": "MPS backend",
+    "url": "https://docs.pytorch.org/docs/stable/notes/mps.html",
+    "note": "PyTorch 的 MPS GPU 后端如何映射计算图和算子到 Apple Metal 体系。"
+  },
+  {
+    "id": 17,
+    "org": "MLX",
+    "title": "Unified Memory",
+    "url": "https://ml-explore.github.io/mlx/build/html/usage/unified_memory.html",
+    "note": "Apple silicon CPU 与 GPU 共享内存池，以及 MLX 按操作选择计算设备。"
+  },
+  {
+    "id": 18,
+    "org": "Apple Developer",
+    "title": "MLComputeUnits",
+    "url": "https://developer.apple.com/documentation/coreml/mlcomputeunits",
+    "note": "Core ML 可允许使用 CPU、GPU 与 Neural Engine；允许使用不等于保证实际落点。"
+  },
+  {
+    "id": 19,
+    "org": "ggml-org",
+    "title": "GGUF specification",
+    "url": "https://github.com/ggml-org/ggml/blob/master/docs/gguf.md",
+    "note": "模型文件中的张量与元数据；数据格式与执行模型的代码是不同事物。"
+  },
+  {
+    "id": 20,
+    "org": "Epic Online Services",
+    "title": "Anti-Cheat support for Linux, Mac, and Steam Deck",
+    "url": "https://onlineservices.epicgames.com/news/epic-online-services-launches-anti-cheat-support-for-linux-mac-and-steam-deck",
+    "note": "2021 年公告区分 Mac 原生构建与 Linux Wine／Proton 支持，不保证任一游戏当前可用。"
+  },
+  {
+    "id": 21,
+    "org": "Docker Docs",
+    "title": "Virtual Machine Manager",
+    "url": "https://docs.docker.com/desktop/features/vmm/",
+    "note": "Docker Desktop 借助 Linux 虚拟机运行 Linux 容器；虚拟化后端随平台而异。"
+  },
+  {
+    "id": 22,
+    "org": "Python",
+    "title": "Extending Python with C or C++",
+    "url": "https://docs.python.org/3/extending/extending.html",
+    "note": "Python 可调用需要编译、链接与动态加载的原生扩展，因此仍受平台依赖约束。"
+  },
+  {
+    "id": 23,
+    "org": "Arm",
+    "title": "Arm Fundamentals: Introduction to understanding Arm processors",
+    "url": "https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/arm-fundamentals-introduction-to-understanding-arm-processors",
+    "note": "区分处理器实现、ISA 版本和指令扩展。早期资料仅用于架构基本概念。"
+  },
+  {
+    "id": 24,
+    "org": "Apple Developer",
+    "title": "Running Intel binaries in Linux VMs",
+    "url": "https://developer.apple.com/documentation/virtualization/running-intel-binaries-in-linux-vms",
+    "note": "Rosetta 也可在受支持的 Arm Linux 虚拟机中转译 Intel Linux 用户态程序。"
+  },
+  {
+    "id": 25,
+    "org": "Apple Support",
+    "title": "32-bit app compatibility with macOS",
+    "url": "https://support.apple.com/en-us/103076",
+    "note": "macOS Catalina 起不再支持 32 位 App；这类中断也发生在 Intel Mac。"
+  },
+  {
+    "id": 26,
+    "org": "Apple Developer",
+    "title": "Building a universal macOS binary",
+    "url": "https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary",
+    "note": "Universal binary 同时包含 arm64 与 x86_64 代码，由系统选择适合的版本。"
+  }
+];
+
+const refs = ids => ids.map(id => `<a class="ref" href="#s${id}">[${id}]</a>`).join('');
+const renderLayers = selected => layers.map(l => `<button class="layer" id="layer-${l.id}" type="button" data-layer="${l.id}" aria-pressed="${l.id===selected}" aria-controls="layer-detail"><span class="lid">L${l.id}</span><span><strong>${l.title}</strong><small>${l.english}</small></span><span class="arr" aria-hidden="true">↗</span></button>`).join('');
+const renderLayer = l => `<div class="detailtag"><span>SELECTED LAYER / 所选层</span><span class="detailnum">${String(l.id).padStart(2,'0')}</span></div><h3>${l.title}</h3><p class="analogy">${l.analogy}</p><p class="explain">${l.explain}</p><div class="compare-pair"><div><span>WINDOWS / 示例</span><p>${l.windows}</p></div><div><span>MAC / 示例</span><p>${l.mac}</p></div></div><div class="fault"><b>可能卡在哪里？</b>${l.fault}<b>通常怎么补？</b>${l.fix}</div><p class="detail-source">进一步查阅 ${l.source}</p>`;
+const renderLayerPrint = () => layers.map(l => `<article class="print-entry"><h3>L${l.id} / ${l.title}</h3><p><strong>${l.analogy}</strong> ${l.explain}</p><p>Windows：${l.windows}<br>Mac：${l.mac}</p><p><strong>卡点：</strong>${l.fault}<br><strong>补法：</strong>${l.fix} ${l.source}</p></article>`).join('');
+const renderCaseButtons = selected => cases.map(c => `<button type="button" data-case="${c.id}" aria-pressed="${c.id===selected}" aria-controls="case-stage">${c.label}</button>`).join('');
+const renderCase = c => `<div class="case-top"><p class="case-meta">${c.tag}</p><h3>${c.title}</h3><p>${c.intro}</p></div><div class="case-body"><div class="statusgrid">${c.status.map(s => `<div class="status ${s[0]}"><strong>${s[1]}</strong>${s[2]}</div>`).join('')}</div><div class="case-route" aria-label="一种解决路径">${c.route.map((s,i) => `${i?'<i aria-hidden="true">→</i>':''}<span${s.startsWith('~')?' class="bridge"':''}>${s.replace(/^~/,'')}</span>`).join('')}</div><div class="case-copy"><div><h4>为什么卡住 / 哪些可以复用</h4><p>${c.why}</p></div><div><h4>怎样补上这条路径</h4><p>${c.fix}</p></div></div><p class="case-limit"><strong>还要留意：</strong>${c.limit} ${refs(c.sources)}</p></div>`;
+const renderCasePrint = () => cases.map(c => `<article class="print-entry"><div class="case-stage">${renderCase(c)}</div></article>`).join('');
+const renderSources = () => sources.map(s => `<article class="source" id="s${s.id}"><span class="source-num">${String(s.id).padStart(2,'0')}</span><div><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.org} · ${s.title} ↗</a><p>${s.note}</p></div></article>`).join('');
+
+(() => {
+  'use strict';
+
+  const root = document.documentElement;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const themeButton = document.getElementById('theme-toggle');
+  const motionButton = document.getElementById('motion-toggle');
+  const architecture = document.getElementById('architecture-art');
+  const runningAnimations = new Set();
+  const elementAnimations = new WeakMap();
+  let printing = false;
+  let pointerFrame = 0;
+  let pointerPosition = null;
+
+  // Storage is optional: a standalone file remains usable when it is unavailable.
+  const readPreference = key => {
+    try { return localStorage.getItem(key); } catch (_) { return null; }
+  };
+  const savePreference = (key, value) => {
+    try { localStorage.setItem(key, value); } catch (_) { /* Keep this session's setting. */ }
+  };
+  let requestedMotion = readPreference('compatibility-map-motion') === 'off' ? 'off' : 'on';
+  let theme = readPreference('compatibility-map-theme') === 'dark' ? 'dark' : 'light';
+
+  const cancelAnimations = () => {
+    runningAnimations.forEach(animation => animation.cancel());
+    runningAnimations.clear();
+  };
+  const resetPointer = () => {
+    if (pointerFrame) cancelAnimationFrame(pointerFrame);
+    pointerFrame = 0;
+    pointerPosition = null;
+    if (architecture) {
+      architecture.style.setProperty('--pointer-x', '0deg');
+      architecture.style.setProperty('--pointer-y', '0deg');
+    }
+  };
+  const canAnimate = () => root.dataset.motion === 'on' && !document.hidden && !printing;
+  const setControlLabel = (button, label) => {
+    const span = button && button.querySelector('[data-control-label]');
+    if (span) span.textContent = label;
+  };
+  const applyTheme = () => {
+    root.dataset.theme = theme;
+    if (themeButton) {
+      themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
+      themeButton.setAttribute('aria-label', theme === 'dark' ? '切换到浅色外观' : '切换到深色外观');
+      setControlLabel(themeButton, theme === 'dark' ? '深色' : '浅色');
+    }
+  };
+  const applyMotion = () => {
+    const enabled = requestedMotion === 'on' && !reducedMotion.matches && !printing;
+    root.dataset.motion = enabled ? 'on' : 'off';
+    if (motionButton) {
+      motionButton.setAttribute('aria-pressed', String(!enabled));
+      motionButton.disabled = reducedMotion.matches;
+      motionButton.title = reducedMotion.matches ? '已遵循系统的“减少动态效果”设置' : '随时开启或关闭页面动效';
+      motionButton.setAttribute('aria-label', reducedMotion.matches ? '动效已关闭，遵循系统减少动态效果设置' : enabled ? '关闭页面动效' : '开启页面动效');
+      setControlLabel(motionButton, enabled ? '动效开' : '动效关');
+    }
+    if (!enabled) {
+      cancelAnimations();
+      resetPointer();
+    }
+  };
+  root.dataset.visible = String(!document.hidden);
+  applyTheme();
+  applyMotion();
+  if (themeButton) themeButton.addEventListener('click', () => {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    applyTheme();
+    savePreference('compatibility-map-theme', theme);
+  });
+  if (motionButton) motionButton.addEventListener('click', () => {
+    requestedMotion = requestedMotion === 'on' ? 'off' : 'on';
+    applyMotion();
+    savePreference('compatibility-map-motion', requestedMotion);
+  });
+  // addListener is retained for older Safari versions.
+  const listenToMedia = (query, callback) => {
+    if (query.addEventListener) query.addEventListener('change', callback);
+    else if (query.addListener) query.addListener(callback);
+  };
+  listenToMedia(reducedMotion, applyMotion);
+  listenToMedia(precisePointer, resetPointer);
+  document.addEventListener('visibilitychange', () => {
+    root.dataset.visible = String(!document.hidden);
+    if (document.hidden) {
+      cancelAnimations();
+      resetPointer();
+    }
+  });
+
+  const animateEntry = (element, distance = 16, duration = 500) => {
+    const previous = elementAnimations.get(element);
+    if (previous) previous.cancel();
+    if (!canAnimate() || typeof element.animate !== 'function') return;
+    // The document's base style is always visible. Animation never gates content.
+    const animation = element.animate([
+      { opacity: 0.3, transform: `translateY(${distance}px)` },
+      { opacity: 1, transform: 'translateY(0)' }
+    ], { duration, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'none' });
+    runningAnimations.add(animation);
+    elementAnimations.set(element, animation);
+    const release = () => {
+      runningAnimations.delete(animation);
+      if (elementAnimations.get(element) === animation) elementAnimations.delete(element);
+    };
+    animation.onfinish = release;
+    animation.oncancel = release;
+  };
+
+  const layerStack = document.getElementById('layer-stack');
+  const layerDetail = document.getElementById('layer-detail');
+  if (layerStack && layerDetail) layerStack.addEventListener('click', event => {
+    const button = event.target.closest('[data-layer]');
+    if (!button || !layerStack.contains(button) || button.getAttribute('aria-pressed') === 'true') return;
+    const selected = layers.find(layer => layer.id === Number(button.dataset.layer));
+    if (!selected) return;
+    layerStack.querySelectorAll('[data-layer]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    layerDetail.innerHTML = renderLayer(selected);
+    animateEntry(layerDetail, 9, 300);
+  });
+  const caseSelect = document.getElementById('case-select');
+  const caseStage = document.getElementById('case-stage');
+  if (caseSelect && caseStage) caseSelect.addEventListener('click', event => {
+    const button = event.target.closest('[data-case]');
+    if (!button || !caseSelect.contains(button) || button.getAttribute('aria-pressed') === 'true') return;
+    const selected = cases.find(item => item.id === button.dataset.case);
+    if (!selected) return;
+    caseSelect.querySelectorAll('[data-case]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    caseStage.innerHTML = renderCase(selected);
+    animateEntry(caseStage, 10, 340);
+  });
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animateEntry(entry.target);
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -16px 0px' });
+    document.querySelectorAll('.sectionhead, .three-takeaways, .lane, .gpu-diagram, .model-diagram, .final-callout').forEach(element => revealObserver.observe(element));
+    if (architecture) {
+      architecture.dataset.inView = 'false';
+      const sceneObserver = new IntersectionObserver(entries => {
+        const inView = entries.some(entry => entry.isIntersecting);
+        architecture.dataset.inView = String(inView);
+        if (!inView) resetPointer();
+      }, { threshold: 0 });
+      sceneObserver.observe(architecture);
+    }
+  } else if (architecture) {
+    architecture.dataset.inView = 'true';
+  }
+
+  if (architecture) {
+    const canTrackPointer = event => canAnimate() && precisePointer.matches && event.pointerType !== 'touch' && architecture.dataset.inView !== 'false';
+    architecture.addEventListener('pointermove', event => {
+      if (!canTrackPointer(event)) return;
+      pointerPosition = { x: event.clientX, y: event.clientY };
+      if (pointerFrame) return;
+      pointerFrame = requestAnimationFrame(() => {
+        pointerFrame = 0;
+        if (!pointerPosition || !canAnimate() || !precisePointer.matches) return;
+        const bounds = architecture.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+        const x = Math.max(-1, Math.min(1, (pointerPosition.x - bounds.left) / bounds.width * 2 - 1));
+        const y = Math.max(-1, Math.min(1, (pointerPosition.y - bounds.top) / bounds.height * 2 - 1));
+        architecture.style.setProperty('--pointer-x', `${(x * 7).toFixed(2)}deg`);
+        architecture.style.setProperty('--pointer-y', `${(-y * 5).toFixed(2)}deg`);
+      });
+    }, { passive: true });
+    architecture.addEventListener('pointerleave', resetPointer);
+    architecture.addEventListener('pointercancel', resetPointer);
+  }
+
+  let closedBeforePrint = [];
+  window.addEventListener('beforeprint', () => {
+    if (printing) return;
+    printing = true;
+    root.dataset.printing = 'true';
+    applyMotion();
+    closedBeforePrint = [...document.querySelectorAll('details:not([open])')];
+    closedBeforePrint.forEach(detail => { detail.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    closedBeforePrint.forEach(detail => { detail.open = false; });
+    closedBeforePrint = [];
+    printing = false;
+    root.dataset.printing = 'false';
+    applyMotion();
+    scheduleProgress();
+  });
+  const printButton = document.getElementById('print');
+  if (printButton) printButton.addEventListener('click', () => window.print());
+
+  const progress = document.getElementById('progress');
+  const navLinks = [...document.querySelectorAll('.side nav a, .mobile-nav a')];
+  const sectionIds = [...new Set(navLinks.map(link => link.getAttribute('href')))];
+  const sections = sectionIds.map(id => document.querySelector(id)).filter(Boolean);
+  let progressQueued = false;
+  const updateProgress = () => {
+    progressQueued = false;
+    const length = root.scrollHeight - window.innerHeight;
+    if (progress) progress.style.width = `${length > 0 ? Math.max(0, Math.min(100, window.scrollY / length * 100)) : 0}%`;
+    let current = sections[0];
+    sections.forEach(section => { if (section.getBoundingClientRect().top <= 150) current = section; });
+    navLinks.forEach(link => {
+      const active = Boolean(current && link.getAttribute('href') === `#${current.id}`);
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  function scheduleProgress() {
+    if (!progressQueued) {
+      progressQueued = true;
+      requestAnimationFrame(updateProgress);
+    }
+  }
+  window.addEventListener('scroll', scheduleProgress, { passive: true });
+  window.addEventListener('resize', scheduleProgress);
+  updateProgress();
+})();
+</script>
+</body></html>
