@@ -6,3 +6,6 @@
 .vscode/
 .idea/
 __pycache__/
+
+# Local course authoring sources; deploy the generated site/ files.
+/course-source/
