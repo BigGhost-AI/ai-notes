@@ -21,14 +21,14 @@ bigghost-ai-notes/
 └── DEPLOYMENT.md                       # 从本地同步到 GitHub 的完整指引
 ```
 
-现有笔记从原单 HTML 文件直接复制，正文、样式、动效和交互均保留。首页使用相对链接，既适用于 `用户名.github.io/bigghost-ai-notes/`，也适用于以后绑定的独立域名。首页和笔记均不依赖外部字体或素材，可以直接双击打开；文件内指向外部资料的链接需要联网。
+现有笔记从原单 HTML 文件直接复制，正文、样式、动效和交互均保留。首页使用相对链接，既适用于 Github 等临时页面，也适用于以后绑定的独立域名。首页和笔记均不依赖外部字体或素材，可以直接双击打开；文件内指向外部资料的链接需要联网。
 
 ## 本地预览
 
 在终端运行：
 
 ```bash
-cd ~/AIProjects/bigghost-ai-notes
+cd ~/path-to-project
 python3 -m http.server 8000 --bind 127.0.0.1 --directory site
 ```
 
@@ -37,8 +37,6 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory site
 ## 发布网站
 
 按 [部署指引](DEPLOYMENT.md) 创建 GitHub 公开仓库，开启 Pages 的 GitHub Actions 发布方式，再推送本地文件。配置完成后，每次向 `main` 分支推送更新都会自动部署。
-
-预计网址形式为 `https://你的GitHub用户名.github.io/bigghost-ai-notes/`。实际网址以仓库的 Settings → Pages 或部署任务输出为准。
 
 ## 添加一篇笔记
 
