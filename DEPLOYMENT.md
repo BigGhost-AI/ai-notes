@@ -126,7 +126,13 @@ git push
 
 工作流只上传 `site/`，不会把部署说明和仓库其他文件作为网站页面发布。它不运行 Jekyll，也不需要 `gh-pages` 分支。GitHub 仓库本身仍为公开仓库。
 
-配置按 2026-09-13 查阅的 GitHub 官方示例整理：`checkout@v6`、`configure-pages@v5`、`upload-pages-artifact@v4`、`deploy-pages@v4`。同一时间保留一个部署执行，不中断已经开始的部署。
+配置按 2026-09-13 核实的官方稳定版本整理：`checkout@v6`、`configure-pages@v6`、`upload-pages-artifact@v5`、`deploy-pages@v5`。这些 JavaScript Actions 使用 Node.js 24；`upload-pages-artifact@v5` 内部调用的 `upload-artifact@v7` 也使用 Node.js 24。无需为本项目在本机安装 Node.js。同一时间保留一个部署执行，不中断已经开始的部署。
+
+升级部署配置后需要提交并推送这些修改，由新提交触发部署。重新运行旧提交对应的工作流，仍会使用旧配置。版本升级不替代首次在 Settings → Pages 中启用 GitHub Actions 的步骤。
+
+- [configure-pages v6 发布说明](https://github.com/actions/configure-pages/releases/tag/v6.0.0)
+- [upload-pages-artifact v5 发布说明](https://github.com/actions/upload-pages-artifact/releases/tag/v5.0.0)
+- [deploy-pages v5 发布说明](https://github.com/actions/deploy-pages/releases/tag/v5.0.0)
 
 - [GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 - [GitHub Pages 自动部署入门](https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically)
